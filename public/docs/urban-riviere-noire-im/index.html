@@ -728,13 +728,13 @@
 <body>
   <div class="video-background" aria-hidden="true">
     <video autoplay muted loop playsinline>
-      <source src="/docs/urban-riviere-noire-im/assets/urban-video.mp4" type="video/mp4" />
+      <source data-asset="urban-video.mp4" type="video/mp4" />
     </video>
   </div>
 
   <main class="deck-shell">
     <header class="deck-header">
-      <img class="brand-logo" src="/docs/urban-riviere-noire-im/assets/urban-sport-primary-dark.png" alt="Urban Sport" />
+      <img class="brand-logo" data-asset="urban-sport-primary-dark.png" alt="Urban Sport" />
       <div class="meta">
         <div class="eyebrow">Urban Riviere Noire Acquisition Opportunity</div>
         <div style="margin-top:8px;">Prepared from existing Urban Sport content, media assets, and strategic positioning material.</div>
@@ -764,7 +764,7 @@
           </div>
         </div>
         <div class="image-card">
-          <img src="/docs/urban-riviere-noire-im/assets/black-river-aerial-master.png" alt="Urban Riviere Noire aerial view" />
+          <img data-asset="black-river-aerial-master.png" alt="Urban Riviere Noire aerial view" />
           <div class="image-caption">
             <div class="micro">Asset overview</div>
             <p>Operational west-coast platform combining sport infrastructure, event capacity, recurring community traffic, and destination-led brand presence.</p>
@@ -793,7 +793,7 @@
           </ul>
         </div>
         <div class="image-card">
-          <img src="/docs/urban-riviere-noire-im/assets/black-river-overlook.jpeg" alt="Black River west coast setting" />
+          <img data-asset="black-river-overlook.jpeg" alt="Black River west coast setting" />
           <div class="image-caption">
             <div class="micro">West coast context</div>
             <p>Urban Sport is positioned in the middle of an expanding premium catchment shaped by hospitality, property, and destination living.</p>
@@ -944,7 +944,7 @@
           </div>
         </div>
         <div class="image-card">
-          <img src="/docs/urban-riviere-noire-im/assets/group-mpl.jpg" alt="Mauritius Padel League community scene" />
+          <img data-asset="group-mpl.jpg" alt="Mauritius Padel League community scene" />
           <div class="image-caption">
             <div class="micro">League & community</div>
             <p>Urban sits inside a visible, branded, and socially active padel environment reinforced by tournaments, families, sponsors, and community identity.</p>
@@ -982,7 +982,7 @@
           </div>
         </div>
         <div class="image-card">
-          <img src="/docs/urban-riviere-noire-im/assets/community-women.jpg" alt="Urban Sport premium community players" />
+          <img data-asset="community-women.jpg" alt="Urban Sport premium community players" />
           <div class="image-caption">
             <div class="micro">Lifestyle layer</div>
             <p>The asset already touches sport, social belonging, premium leisure, and visually marketable community moments.</p>
@@ -1090,7 +1090,7 @@
             <p style="margin-top:18px;">Urban benefits from national awareness, structured competition, event cadence, sponsor relevance, and increasing sophistication of the Mauritian padel ecosystem.</p>
           </div>
           <div class="image-card">
-            <img src="/docs/urban-riviere-noire-im/assets/junior-prize.jpg" alt="Urban junior and community awards moment" />
+            <img data-asset="junior-prize.jpg" alt="Urban junior and community awards moment" />
             <div class="image-caption">
               <div class="micro">Family & next generation</div>
               <p>The platform already connects adults, juniors, sponsors, and public-facing community touchpoints that strengthen long-term relevance.</p>
@@ -1175,7 +1175,7 @@
     <section class="slide full-bleed">
       <div class="slide-number">Slide 11</div>
       <div class="media">
-        <img src="/docs/urban-riviere-noire-im/assets/black-river-overlook.jpeg" alt="Riviere Noire closing aerial view" />
+        <img data-asset="black-river-overlook.jpeg" alt="Riviere Noire closing aerial view" />
       </div>
       <div class="content">
         <div class="closing-box">
@@ -1197,5 +1197,24 @@
       </div>
     </section>
   </main>
+  <script>
+    (function () {
+      const base = window.location.protocol === "file:"
+        ? "assets/"
+        : "/docs/urban-riviere-noire-im/assets/";
+
+      document.querySelectorAll("[data-asset]").forEach((node) => {
+        const asset = node.getAttribute("data-asset");
+        if (!asset) return;
+        if (node.tagName === "SOURCE") {
+          node.src = base + asset;
+          const video = node.parentElement;
+          if (video && typeof video.load === "function") video.load();
+          return;
+        }
+        node.src = base + asset;
+      });
+    })();
+  </script>
 </body>
 </html>
