@@ -727,9 +727,7 @@
 </head>
 <body>
   <div class="video-background" aria-hidden="true">
-    <video autoplay muted loop playsinline>
-      <source data-asset="urban-video.mp4" type="video/mp4" />
-    </video>
+    <video id="deck-background-video" data-video-asset="urban-video.mp4" autoplay muted loop playsinline></video>
   </div>
 
   <main class="deck-shell">
@@ -1203,15 +1201,26 @@
         ? "assets/"
         : "/docs/urban-riviere-noire-im/assets/";
 
+      const video = document.getElementById("deck-background-video");
+      if (video) {
+        const videoAsset = video.getAttribute("data-video-asset");
+        if (videoAsset) {
+          video.src = base + videoAsset;
+          video.muted = true;
+          video.playsInline = true;
+          video.autoplay = true;
+          video.loop = true;
+          video.load();
+          const playAttempt = video.play();
+          if (playAttempt && typeof playAttempt.catch === "function") {
+            playAttempt.catch(() => {});
+          }
+        }
+      }
+
       document.querySelectorAll("[data-asset]").forEach((node) => {
         const asset = node.getAttribute("data-asset");
         if (!asset) return;
-        if (node.tagName === "SOURCE") {
-          node.src = base + asset;
-          const video = node.parentElement;
-          if (video && typeof video.load === "function") video.load();
-          return;
-        }
         node.src = base + asset;
       });
     })();
