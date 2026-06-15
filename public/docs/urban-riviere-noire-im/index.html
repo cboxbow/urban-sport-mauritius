@@ -763,6 +763,30 @@
       letter-spacing: 0.18em;
     }
 
+    @media (max-width: 1360px) {
+      .ecosystem {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        min-height: auto;
+        padding: 22px;
+        align-content: start;
+      }
+
+      .eco-node,
+      .ecosystem-center {
+        position: static;
+        width: auto;
+        margin: 0;
+        transform: none;
+      }
+
+      .ecosystem-center {
+        grid-column: 1 / -1;
+        order: -1;
+      }
+    }
+
     @media (max-width: 1200px) {
       .grid-hero,
       .grid-2,
@@ -779,9 +803,7 @@
       .brand-logo {
         margin: 0 auto;
       }
-
-      .map-shell,
-      .ecosystem {
+      .map-shell {
         min-height: 980px;
       }
 
@@ -809,8 +831,7 @@
         font-size: clamp(30px, 11vw, 52px);
       }
 
-      .map-shell,
-      .ecosystem {
+      .map-shell {
         min-height: 1120px;
       }
 
@@ -829,6 +850,10 @@
         width: auto;
         height: auto;
         margin-top: 18px;
+      }
+
+      .ecosystem {
+        grid-template-columns: 1fr;
       }
 
       .small-grid {
