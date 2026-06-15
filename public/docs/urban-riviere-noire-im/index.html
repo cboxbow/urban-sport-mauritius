@@ -261,6 +261,10 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
+    .stat-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .stack-16 > * + * {
       margin-top: 16px;
     }
@@ -345,7 +349,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(4, 5, 7, 0.08), rgba(4, 5, 7, 0.48));
+      background: linear-gradient(180deg, rgba(4, 5, 7, 0.14), rgba(4, 5, 7, 0.76));
     }
 
     .image-caption {
@@ -354,9 +358,17 @@
       right: 24px;
       bottom: 22px;
       z-index: 2;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(10, 12, 16, 0.94), rgba(7, 10, 14, 0.88));
+      backdrop-filter: blur(14px);
     }
 
     .image-caption p {
+      margin-top: 8px;
+      font-size: 16px;
+      line-height: 1.62;
       color: rgba(243, 238, 231, 0.84);
     }
 
@@ -404,6 +416,56 @@
       margin-top: 18px;
       font-size: 15px;
       line-height: 1.7;
+    }
+
+    .financial-stat {
+      min-height: 220px;
+      padding: 28px;
+    }
+
+    .financial-stat .stat-value {
+      font-size: 60px;
+    }
+
+    .financial-stat .stat-copy {
+      max-width: 22ch;
+    }
+
+    .evidence-card {
+      min-height: 560px;
+    }
+
+    .evidence-card img {
+      object-position: center top;
+    }
+
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .positioning-card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(9, 12, 18, 0.92);
+      box-shadow: var(--shadow);
+    }
+
+    .positioning-card strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+    }
+
+    .positioning-card p {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.68;
     }
 
     .map-shell {
@@ -861,26 +923,26 @@
           <div class="eyebrow">Historic Revenue Momentum</div>
           <h2>Revenue trajectory already supports a stronger institutional narrative.</h2>
           <p class="lead" style="font-size:20px;">The financial file inside the sale folder adds real transaction credibility. It shows a visible revenue ramp from 2023 to 2025 and a documented six-month revenue base for 2026.</p>
-          <div class="grid-4">
-            <div class="stat-card">
+          <div class="grid-4 stat-grid-2">
+            <div class="stat-card financial-stat">
               <div class="stat-value">7.69M</div>
               <div class="stat-label">2023 Revenue</div>
-              <p class="stat-copy">Visible annual total from the working financial analysis file.</p>
+              <p class="stat-copy">First disclosed annual revenue benchmark visible in the seller financial file.</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-card financial-stat">
               <div class="stat-value">8.67M</div>
               <div class="stat-label">2024 Revenue</div>
-              <p class="stat-copy">Year-on-year expansion supporting growing commercial maturity.</p>
+              <p class="stat-copy">Clear annual progression confirming stronger commercial throughput and operating traction.</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-card financial-stat">
               <div class="stat-value">9.06M</div>
               <div class="stat-label">2025 Revenue</div>
-              <p class="stat-copy">The strongest visible annual level in the current source material.</p>
+              <p class="stat-copy">Peak visible year in the current file set, supporting a more mature valuation discussion.</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-card financial-stat">
               <div class="stat-value">3.31M</div>
               <div class="stat-label">2026 H1 Revenue</div>
-              <p class="stat-copy">Six-month visibility that can support a more serious buyer conversation.</p>
+              <p class="stat-copy">Documented six-month run rate already sufficient to frame institutional underwriting logic.</p>
             </div>
           </div>
           <div class="quote-card">
@@ -888,11 +950,11 @@
             <strong>The file moves the story from lifestyle positioning alone into a documented operating asset with visible revenue history and a clearer underwriting base.</strong>
           </div>
         </div>
-        <div class="image-card">
+        <div class="image-card evidence-card">
           <img data-asset="img-2715.png" alt="Black River season structure" />
           <div class="image-caption">
             <div class="micro">Season activity proof</div>
-            <p>The Black River season calendar reinforces recurring programming density, category spread, and sustained venue animation across the year.</p>
+            <p>The Black River season calendar demonstrates visible programming density, year-round competitive rhythm, and repeat usage logic built into the venue.</p>
           </div>
         </div>
       </div>
@@ -927,11 +989,11 @@
             <div class="chip">Capex signal</div>
           </div>
         </div>
-        <div class="image-card">
+        <div class="image-card evidence-card">
           <img data-asset="img-2056.png" alt="Black River tournament board" />
           <div class="image-caption">
             <div class="micro">Commercial proof</div>
-            <p>Black River already presents as a high-activity venue with event, junior, mixed, league, and premium tournament logic embedded into its operating identity.</p>
+            <p>Existing campaign and event boards show that the site already operates as an active, programmed venue rather than a passive court rental asset.</p>
           </div>
         </div>
       </div>
@@ -941,37 +1003,37 @@
       <div class="slide-number">Slide 06</div>
       <div class="grid-2">
         <div class="stack-22">
-          <div class="eyebrow">West Coast Padel Ecosystem</div>
-          <h2>Urban operates inside the strongest padel ecosystem on the West Coast.</h2>
-          <p class="lead" style="font-size:20px;">This cluster should not be read as crowding. It should be read as proof of a mature market, active player density, premium sporting relevance, and a strong network effect that benefits the best-positioned venues.</p>
-          <div class="small-grid">
-            <div class="small-card">
-              <strong>Urban Sport Black River</strong>
-              4 courts<br />1 foot five<br />event-ready venue
+          <div class="eyebrow">Strategic Positioning</div>
+          <h2>Urban Black River sits inside a premium west-coast demand corridor with clear monetisation depth.</h2>
+          <p class="lead" style="font-size:20px;">The asset should be positioned around catchment quality, lifestyle relevance, and programming potential rather than around simple court count comparisons.</p>
+          <div class="positioning-grid">
+            <div class="positioning-card">
+              <strong>Premium residential basin</strong>
+              <p>Black River and the wider west coast continue to attract high-income households, second-home owners, and internationally mobile families.</p>
             </div>
-            <div class="small-card">
-              <strong>RM Club Tamarin</strong>
-              5 courts<br />social density<br />strong local traffic
+            <div class="positioning-card">
+              <strong>Recurring player demand</strong>
+              <p>The venue is supported by daily play, social formats, academy-style participation, and a visible rhythm of repeat community usage.</p>
             </div>
-            <div class="small-card">
-              <strong>SPARC Cascavelle</strong>
-              4 courts<br />institutional feel<br />west catchment access
+            <div class="positioning-card">
+              <strong>Event and sponsor relevance</strong>
+              <p>Urban already lends itself to tournament programming, branded activations, hospitality moments, and corporate use cases beyond standard bookings.</p>
             </div>
-            <div class="small-card">
-              <strong>Additional nodes</strong>
-              Terres Brunes<br />Club House<br />Club Med Albion<br />FitLife
+            <div class="positioning-card">
+              <strong>Brand and visibility layer</strong>
+              <p>The site carries a branded identity that can support premium positioning, buyer storytelling, and future expansion into broader lifestyle formats.</p>
             </div>
           </div>
           <div class="quote-card">
-            <div class="micro">Market framing</div>
-            <strong>Cluster density supports recurring play, tournament flow, sponsorship logic, coaching progression, and a larger premium audience across the entire coast.</strong>
+            <div class="micro">Buyer framing</div>
+            <strong>This is best understood as a positioned lifestyle-sport asset in a high-quality coastal catchment, with multiple routes to monetisation and brand extension.</strong>
           </div>
         </div>
         <div class="image-card">
-          <img data-asset="group-mpl.jpg" alt="Mauritius Padel League community scene" />
+          <img data-asset="black-river-overlook.jpeg" alt="Urban Black River destination positioning" />
           <div class="image-caption">
-            <div class="micro">League & community</div>
-            <p>Urban sits inside a visible, branded, and socially active padel environment reinforced by tournaments, families, sponsors, and community identity.</p>
+            <div class="micro">Destination asset read</div>
+            <p>Viewed from above, the venue already reads as a recognisable west-coast sports destination with stronger lifestyle and event potential than a standard neighbourhood club.</p>
           </div>
         </div>
       </div>
