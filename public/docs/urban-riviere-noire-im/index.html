@@ -76,7 +76,7 @@
       top: 0;
       z-index: 20;
       display: grid;
-      grid-template-columns: auto 1fr auto;
+      grid-template-columns: auto 1fr auto auto;
       gap: 20px;
       align-items: center;
       padding: 18px 24px;
@@ -124,6 +124,25 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       background: rgba(255, 255, 255, 0.02);
+    }
+
+    .sound-toggle {
+      appearance: none;
+      border: 1px solid rgba(208, 177, 131, 0.38);
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: rgba(208, 177, 131, 0.08);
+      color: var(--accent-strong);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .sound-toggle:hover {
+      background: rgba(208, 177, 131, 0.14);
+      transform: translateY(-1px);
     }
 
     .slide {
@@ -727,7 +746,7 @@
 </head>
 <body>
   <div class="video-background" aria-hidden="true">
-    <video id="deck-background-video" data-video-asset="urban-video.mp4" autoplay muted loop playsinline></video>
+    <video id="deck-background-video" data-video-local="URBAN RNOIRE - SALE/OCT M1000 Padel League.mov" data-video-web="/docs/urban-riviere-noire-im/assets/urban-video.mp4" autoplay muted loop playsinline></video>
   </div>
 
   <main class="deck-shell">
@@ -738,6 +757,7 @@
         <div style="margin-top:8px;">Prepared from existing Urban Sport content, media assets, and strategic positioning material.</div>
       </div>
       <div class="header-pill">West Coast Lifestyle Asset | Mauritius</div>
+      <button class="sound-toggle" id="sound-toggle" type="button">Enable soundtrack</button>
     </header>
 
     <section class="slide">
@@ -836,83 +856,89 @@
 
     <section class="slide">
       <div class="slide-number">Slide 04</div>
-      <div class="stack-22">
-        <div class="eyebrow">West Coast Lifestyle Map</div>
-        <h2>Urban Sport is embedded in the main premium basin of the island's West Coast.</h2>
-      </div>
-      <div class="map-shell" style="margin-top:30px;">
-        <div class="map-waterline"></div>
-        <div class="map-shore"></div>
-
-        <div class="map-node urban" style="left:38%; top:38%;">
-          <strong>Urban Sport</strong>
-          <span>Black River</span>
+      <div class="grid-2">
+        <div class="stack-22">
+          <div class="eyebrow">Historic Revenue Momentum</div>
+          <h2>Revenue trajectory already supports a stronger institutional narrative.</h2>
+          <p class="lead" style="font-size:20px;">The financial file inside the sale folder adds real transaction credibility. It shows a visible revenue ramp from 2023 to 2025 and a documented six-month revenue base for 2026.</p>
+          <div class="grid-4">
+            <div class="stat-card">
+              <div class="stat-value">7.69M</div>
+              <div class="stat-label">2023 Revenue</div>
+              <p class="stat-copy">Visible annual total from the working financial analysis file.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">8.67M</div>
+              <div class="stat-label">2024 Revenue</div>
+              <p class="stat-copy">Year-on-year expansion supporting growing commercial maturity.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">9.06M</div>
+              <div class="stat-label">2025 Revenue</div>
+              <p class="stat-copy">The strongest visible annual level in the current source material.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">3.31M</div>
+              <div class="stat-label">2026 H1 Revenue</div>
+              <p class="stat-copy">Six-month visibility that can support a more serious buyer conversation.</p>
+            </div>
+          </div>
+          <div class="quote-card">
+            <div class="micro">Seller interpretation</div>
+            <strong>The file moves the story from lifestyle positioning alone into a documented operating asset with visible revenue history and a clearer underwriting base.</strong>
+          </div>
         </div>
-
-        <div class="map-node" style="left:24%; top:24%;">
-          <strong>RM Club</strong>
-          <span>Tamarin | 5 courts</span>
-        </div>
-
-        <div class="map-node" style="left:50%; top:18%;">
-          <strong>SPARC</strong>
-          <span>Cascavelle | 4 courts</span>
-        </div>
-
-        <div class="map-node" style="left:56%; top:32%;">
-          <strong>Terres Brunes</strong>
-          <span>3 courts</span>
-        </div>
-
-        <div class="map-node" style="left:58%; top:50%;">
-          <strong>Club House</strong>
-          <span>Black River | 2 courts</span>
-        </div>
-
-        <div class="map-node" style="left:68%; top:61%;">
-          <strong>Club Med Albion</strong>
-          <span>3 courts</span>
-        </div>
-
-        <div class="map-node" style="left:34%; top:54%;">
-          <strong>FitLife</strong>
-          <span>West Coast</span>
-        </div>
-
-        <div class="map-node" style="left:18%; top:46%;">
-          <strong>Tamarina</strong>
-          <span>Golf & Villas</span>
-        </div>
-
-        <div class="map-node" style="left:20%; top:66%;">
-          <strong>Black Rock</strong>
-          <span>Residential</span>
-        </div>
-
-        <div class="map-node" style="left:42%; top:62%;">
-          <strong>Cap Tamarin</strong>
-          <span>Mixed Use</span>
-        </div>
-
-        <div class="map-node" style="left:74%; top:44%;">
-          <strong>La Balise Marina</strong>
-          <span>Waterfront</span>
-        </div>
-
-        <div class="map-node" style="left:72%; top:26%;">
-          <strong>Harmonie Golf</strong>
-          <span>Leisure Catchment</span>
-        </div>
-
-        <div class="map-node" style="left:58%; top:74%;">
-          <strong>Les Salines</strong>
-          <span>Coastal Residential</span>
+        <div class="image-card">
+          <img data-asset="img-2715.png" alt="Black River season structure" />
+          <div class="image-caption">
+            <div class="micro">Season activity proof</div>
+            <p>The Black River season calendar reinforces recurring programming density, category spread, and sustained venue animation across the year.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="slide">
       <div class="slide-number">Slide 05</div>
+      <div class="grid-2">
+        <div class="stack-22">
+          <div class="eyebrow">Operating Base & Diligence Anchors</div>
+          <h2>Cost base, contracts, and replacement signals materially strengthen the sale case.</h2>
+          <div class="card stack-22">
+            <h4>Visible operating base</h4>
+            <ul class="stack-16">
+              <li>Approximate monthly cost base visible in the model: <strong style="color:var(--text);">Rs 264,500</strong></li>
+              <li>Annual visible charges: <strong style="color:var(--text);">Rs 3,174,000</strong></li>
+              <li>Recurring lines include rent, salaries, electricity, telecom, water, security, insurance, upkeep, and stock.</li>
+            </ul>
+          </div>
+          <div class="card stack-22">
+            <h4>Diligence material already available</h4>
+            <ul class="stack-16">
+              <li>Three land contract PDFs in the sale folder.</li>
+              <li>A turf / padel grass quote supporting infrastructure replacement logic.</li>
+              <li>Season programming boards and tournament proof points already assembled.</li>
+            </ul>
+          </div>
+          <div class="chip-row">
+            <div class="chip">Revenue visibility</div>
+            <div class="chip">Cost visibility</div>
+            <div class="chip">Contractual backing</div>
+            <div class="chip">Capex signal</div>
+          </div>
+        </div>
+        <div class="image-card">
+          <img data-asset="img-2056.png" alt="Black River tournament board" />
+          <div class="image-caption">
+            <div class="micro">Commercial proof</div>
+            <p>Black River already presents as a high-activity venue with event, junior, mixed, league, and premium tournament logic embedded into its operating identity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="slide-number">Slide 06</div>
       <div class="grid-2">
         <div class="stack-22">
           <div class="eyebrow">West Coast Padel Ecosystem</div>
@@ -952,7 +978,7 @@
     </section>
 
     <section class="slide">
-      <div class="slide-number">Slide 06</div>
+      <div class="slide-number">Slide 07</div>
       <div class="grid-2">
         <div class="stack-22">
           <div class="eyebrow">Platform Acquisition Thesis</div>
@@ -990,7 +1016,7 @@
     </section>
 
     <section class="slide">
-      <div class="slide-number">Slide 07</div>
+      <div class="slide-number">Slide 08</div>
       <div class="stack-22">
         <div class="eyebrow">The Urban Ecosystem</div>
         <h2>Urban should be understood as an ecosystem, not a standalone court product.</h2>
@@ -1037,7 +1063,7 @@
     </section>
 
     <section class="slide">
-      <div class="slide-number">Slide 08</div>
+      <div class="slide-number">Slide 09</div>
       <div class="grid-2">
         <div class="stack-22">
           <div class="eyebrow">Strategic Buyer Opportunities</div>
@@ -1099,7 +1125,7 @@
     </section>
 
     <section class="slide">
-      <div class="slide-number">Slide 09</div>
+      <div class="slide-number">Slide 10</div>
       <div class="stack-22">
         <div class="eyebrow">Valuation Framework</div>
         <h2>Value sits at the intersection of infrastructure, catchment quality, and platform upside.</h2>
@@ -1134,7 +1160,7 @@
     </section>
 
     <section class="slide">
-      <div class="slide-number">Slide 10</div>
+      <div class="slide-number">Slide 11</div>
       <div class="grid-3">
         <div class="card stack-22">
           <div class="eyebrow">Transaction Rationale</div>
@@ -1171,7 +1197,7 @@
     </section>
 
     <section class="slide full-bleed">
-      <div class="slide-number">Slide 11</div>
+      <div class="slide-number">Slide 12</div>
       <div class="media">
         <img data-asset="black-river-overlook.jpeg" alt="Riviere Noire closing aerial view" />
       </div>
@@ -1197,15 +1223,17 @@
   </main>
   <script>
     (function () {
-      const base = window.location.protocol === "file:"
-        ? "assets/"
-        : "/docs/urban-riviere-noire-im/assets/";
+      const isLocal = window.location.protocol === "file:";
+      const base = isLocal ? "assets/" : "/docs/urban-riviere-noire-im/assets/";
 
       const video = document.getElementById("deck-background-video");
+      const soundToggle = document.getElementById("sound-toggle");
       if (video) {
-        const videoAsset = video.getAttribute("data-video-asset");
+        const videoAsset = isLocal
+          ? video.getAttribute("data-video-local")
+          : video.getAttribute("data-video-web");
         if (videoAsset) {
-          video.src = base + videoAsset;
+          video.src = isLocal ? videoAsset : videoAsset;
           video.muted = true;
           video.playsInline = true;
           video.autoplay = true;
@@ -1216,6 +1244,19 @@
             playAttempt.catch(() => {});
           }
         }
+      }
+
+      if (video && soundToggle) {
+        soundToggle.addEventListener("click", () => {
+          const enableSound = video.muted;
+          video.muted = !enableSound;
+          video.volume = enableSound ? 0.85 : 0;
+          const replay = video.play();
+          if (replay && typeof replay.catch === "function") {
+            replay.catch(() => {});
+          }
+          soundToggle.textContent = enableSound ? "Soundtrack on" : "Enable soundtrack";
+        });
       }
 
       document.querySelectorAll("[data-asset]").forEach((node) => {
