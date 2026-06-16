@@ -201,8 +201,10 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      display: flex;
-      align-items: flex-end;
+      display: grid;
+      grid-template-columns: 1.08fr 0.72fr;
+      gap: 24px;
+      align-items: end;
       padding: 48px;
     }
 
@@ -214,6 +216,42 @@
       background: rgba(7, 10, 15, 0.48);
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 18px;
+      align-self: end;
+    }
+
+    .mini-stat {
+      padding: 22px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      background: rgba(7, 10, 15, 0.54);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .mini-stat .micro {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .mini-stat p {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--muted);
     }
 
     .eyebrow,
@@ -456,6 +494,38 @@
       color: var(--ink);
     }
 
+    .ecosystem-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .band-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        rgba(8, 11, 16, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .band-card strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-strong);
+    }
+
+    .band-card p {
+      font-size: 16px;
+      line-height: 1.62;
+      color: var(--ink);
+    }
+
     .footer-note {
       margin-top: 18px;
       font-size: 12px;
@@ -491,7 +561,9 @@
       .grid-2,
       .grid-3,
       .grid-4,
-      .split-hero {
+      .split-hero,
+      .hero-content,
+      .ecosystem-band {
         grid-template-columns: 1fr;
       }
     }
@@ -514,7 +586,6 @@
 
       .hero-content {
         padding: 28px;
-        align-items: flex-end;
       }
 
       .hero-panel {
@@ -564,10 +635,13 @@
         <a class="nav-link" href="#infrastructure">Infrastructure</a>
         <a class="nav-link" href="#community">Community</a>
         <a class="nav-link" href="#market">Market</a>
+        <a class="nav-link" href="#ecosystem">Ecosystem</a>
         <a class="nav-link" href="#growth">Growth</a>
+        <a class="nav-link" href="#rationale">Rationale</a>
+        <a class="nav-link" href="#buyers">Buyers</a>
         <a class="nav-link" href="#opportunity">Opportunity</a>
       </nav>
-      <div class="price-pill">For Sale · Rs 35 Million</div>
+      <div class="price-pill">For Sale - Rs 35 Million</div>
       <button id="sound-toggle" class="sound-toggle" type="button">Enable soundtrack</button>
     </header>
 
@@ -582,7 +656,7 @@
           <div class="eyebrow">Strategic Acquisition Opportunity</div>
           <h1>Urban Sport Black River</h1>
           <p class="hero-subtitle">West Coast Lifestyle & Sports Platform</p>
-          <p class="lead">A premium operating venue positioned inside Mauritius’ most desirable west-coast lifestyle corridor.</p>
+          <p class="lead">A premium operating venue positioned inside Mauritius' most desirable west-coast lifestyle corridor.</p>
           <div class="metric-row">
             <div class="metric-pill">4 padel courts</div>
             <div class="metric-pill">1 foot five</div>
@@ -590,7 +664,24 @@
             <div class="metric-pill">snack bar</div>
             <div class="metric-pill">events platform</div>
           </div>
-          <div class="opportunity-banner">For Sale · Rs 35 Million</div>
+          <div class="opportunity-banner">For Sale - Rs 35 Million</div>
+        </div>
+        <div class="hero-side">
+          <div class="mini-stat">
+            <span class="micro">Acquisition Lens</span>
+            <strong>West Coast Asset</strong>
+            <p>Positioned inside Mauritius' highest-value leisure, residential, and expatriate corridor.</p>
+          </div>
+          <div class="mini-stat">
+            <span class="micro">Platform Mix</span>
+            <strong>Sport + Lifestyle</strong>
+            <p>Padel, Foot Five, hospitality, events, coaching, and community already coexist on site.</p>
+          </div>
+          <div class="mini-stat">
+            <span class="micro">Seller Ask</span>
+            <strong>Rs 35 Million</strong>
+            <p>Presented as an operating lifestyle platform with brand, visibility, and monetisation optionality.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -650,7 +741,7 @@
             </article>
             <article class="summary-card">
               <strong>Demand base</strong>
-              <p>High-income households, visitors, family users, corporate leisure, and premium second-home owners.</p>
+            <p>High-income households, visitors, family users, corporate leisure, and premium second-home owners.</p>
             </article>
           </div>
           <div class="chip-row">
@@ -767,8 +858,43 @@
       </div>
     </section>
 
+    <section id="ecosystem" class="page">
+      <div class="page-index">07 / Ecosystem</div>
+      <div class="section-head">
+        <div class="eyebrow">West Coast Ecosystem</div>
+        <h2>A premium demand cluster that supports long-term venue relevance</h2>
+        <p class="section-copy">Urban benefits from overlapping residential, tourism, expatriate, family, and corporate demand rather than relying on one narrow customer source.</p>
+      </div>
+      <div class="ecosystem-band">
+        <article class="band-card">
+          <strong>Residential Wealth</strong>
+          <p>Premium homes, second residences, and high-income households strengthen recurring leisure demand.</p>
+        </article>
+        <article class="band-card">
+          <strong>Expat Lifestyle</strong>
+          <p>Sport-driven social habits support frequency, referrals, and higher spending profiles.</p>
+        </article>
+        <article class="band-card">
+          <strong>Tourism Flow</strong>
+          <p>Visitors and hospitality groups create demand for destination-friendly activities and packages.</p>
+        </article>
+        <article class="band-card">
+          <strong>Corporate Use</strong>
+          <p>Team events, private bookings, and sponsor activations widen venue utility beyond members.</p>
+        </article>
+        <article class="band-card">
+          <strong>Family Retention</strong>
+          <p>Junior pathways and casual social use improve repeat traffic across multiple age groups.</p>
+        </article>
+        <article class="band-card">
+          <strong>Brand Visibility</strong>
+          <p>Events, content, and community presence keep Urban commercially visible inside the west coast market.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="growth" class="page">
-      <div class="page-index">07 / Growth Potential</div>
+      <div class="page-index">08 / Growth Potential</div>
       <div class="split-hero">
         <div class="stack">
           <div class="section-head">
@@ -805,8 +931,50 @@
       </div>
     </section>
 
+    <section id="rationale" class="page">
+      <div class="page-index">09 / Transaction Rationale</div>
+      <div class="section-head">
+        <div class="eyebrow">Transaction Rationale</div>
+        <h2>Why the asset deserves investor attention now</h2>
+        <p class="section-copy">The acquisition case is supported by premium address quality, visible operations, category tailwinds, and multiple routes to value creation after takeover.</p>
+      </div>
+      <div class="grid-4">
+        <article class="tile"><div><strong>Scarcity</strong><p>Visible west-coast operating base in a high-value lifestyle corridor.</p></div><div class="chip">location premium</div></article>
+        <article class="tile"><div><strong>Execution</strong><p>Existing infrastructure and operating history reduce activation risk for buyers.</p></div><div class="chip">de-risked base</div></article>
+        <article class="tile"><div><strong>Demand</strong><p>Residential, expatriate, family, tourism, and corporate usage can all support the platform.</p></div><div class="chip">multi-source demand</div></article>
+        <article class="tile"><div><strong>Optionality</strong><p>Brand, events, academy, hospitality, retail, and sponsorship extend upside beyond court rentals.</p></div><div class="chip">platform upside</div></article>
+      </div>
+    </section>
+
+    <section id="buyers" class="page">
+      <div class="page-index">10 / Buyer Universe</div>
+      <div class="section-head">
+        <div class="eyebrow">Buyer Universe</div>
+        <h2>Most logical acquirers</h2>
+        <p class="section-copy">The asset is relevant to multiple buyer profiles because it sits at the intersection of lifestyle, hospitality, community, and premium real estate.</p>
+      </div>
+      <div class="grid-2">
+        <article class="summary-card">
+          <strong>Hospitality Groups</strong>
+          <p>Transform Urban into a guest-facing sports, wellness, and destination experience layer.</p>
+        </article>
+        <article class="summary-card">
+          <strong>Real Estate Developers</strong>
+          <p>Use the platform as a live amenity strengthening residences, projects, and owner loyalty.</p>
+        </article>
+        <article class="summary-card">
+          <strong>Family Offices</strong>
+          <p>Acquire a differentiated operating lifestyle asset with brand and growth value.</p>
+        </article>
+        <article class="summary-card">
+          <strong>Strategic Leisure Operators</strong>
+          <p>Build a regional platform around sports, community, events, and recurring premium users.</p>
+        </article>
+      </div>
+    </section>
+
     <section id="opportunity" class="page">
-      <div class="page-index">08 / Acquisition Opportunity</div>
+      <div class="page-index">11 / Acquisition Opportunity</div>
       <div class="section-head">
         <div class="eyebrow">Transaction Opportunity</div>
         <h2>What an acquirer is really buying</h2>
@@ -852,7 +1020,7 @@
     </section>
 
     <section id="closing" class="page hero-page">
-      <div class="page-index">09 / Closing</div>
+      <div class="page-index">12 / Closing</div>
       <div class="hero-media">
         <img data-asset="black-river-overlook.jpeg" alt="Black River closing sunset view" />
       </div>
