@@ -433,6 +433,38 @@
       filter: brightness(0.92) contrast(1.04) saturate(1.04);
     }
 
+    .visual-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .visual-tile {
+      position: relative;
+      min-height: 180px;
+      overflow: hidden;
+    }
+
+    .visual-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.88) contrast(1.05) saturate(1.04);
+    }
+
+    .spotlight-split {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .stacked-visuals {
+      display: grid;
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
     .eyebrow,
     .micro {
       color: var(--gold-strong);
@@ -690,6 +722,9 @@
 
       .hero-content,
       .section-summary-layout,
+      .visual-band,
+      .spotlight-split,
+      .stacked-visuals,
       .grid-4,
       .grid-3,
       .grid-2,
@@ -775,6 +810,11 @@
         left: 10px;
         bottom: 10px;
         justify-content: space-between;
+      }
+
+      .page.active {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
 
       .page-contact {
@@ -978,6 +1018,29 @@
         <div class="eyebrow">Infrastructure & Revenue Streams</div>
         <h2>A compact platform with multiple monetisation layers</h2>
       </div>
+      <div class="visual-band">
+        <div class="image-card visual-tile">
+          <img data-asset="img-2715.png" alt="Padel and venue overview" />
+          <div class="image-caption">
+            <div class="micro">Core Venue</div>
+            <p>Operational sports base already in place.</p>
+          </div>
+        </div>
+        <div class="image-card visual-tile">
+          <img data-asset="img-2444.png" alt="Community and activation visual" />
+          <div class="image-caption">
+            <div class="micro">Activation</div>
+            <p>Event-ready environment supporting wider spend.</p>
+          </div>
+        </div>
+        <div class="image-card visual-tile">
+          <img data-asset="img-8070.jpg" alt="Lifestyle and customer energy" />
+          <div class="image-caption">
+            <div class="micro">Footfall</div>
+            <p>Social density helps reinforce repeat use.</p>
+          </div>
+        </div>
+      </div>
       <div class="grid-4">
         <article class="tile"><div><strong>Padel Courts</strong><p>4 operational courts forming the core premium sports offer.</p></div><div class="chip">core asset</div></article>
         <article class="tile"><div><strong>Foot Five</strong><p>Complementary play format supporting wider venue utilisation.</p></div><div class="chip">adjacent revenue</div></article>
@@ -1018,52 +1081,83 @@
 
     <section id="market" class="page standard" data-photo="group-mpl.jpg">
       <div class="page-index">06 / Market</div>
-      <div class="section-head">
-        <div class="eyebrow">A Market Entering Its Growth Phase</div>
-        <h2>Visible momentum already supports a stronger institutional conversation</h2>
-      </div>
-      <div class="grid-4">
-        <article class="stat-card">
-          <div class="stat-value">7.69M</div>
-          <div class="stat-label">2023 Revenue</div>
-          <div class="stat-note">Visible annual base from the reviewed financial file.</div>
-        </article>
-        <article class="stat-card">
-          <div class="stat-value">8.67M</div>
-          <div class="stat-label">2024 Revenue</div>
-          <div class="stat-note">Year-on-year commercial expansion.</div>
-        </article>
-        <article class="stat-card">
-          <div class="stat-value">9.06M</div>
-          <div class="stat-label">2025 Revenue</div>
-          <div class="stat-note">Strongest visible annual level in the current source material.</div>
-        </article>
-        <article class="stat-card">
-          <div class="stat-value">3.31M</div>
-          <div class="stat-label">2026 H1 Revenue</div>
-          <div class="stat-note">Half-year visibility supporting buyer dialogue.</div>
-        </article>
-      </div>
-      <div class="grid-2">
-        <div class="summary-card"><strong>MPL Growth</strong><p>National structure and organised calendar flow support category credibility.</p></div>
-        <div class="summary-card"><strong>West Coast Demand</strong><p>Residential, tourism, and leisure growth continue to strengthen the address.</p></div>
+      <div class="split-layout">
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">A Market Entering Its Growth Phase</div>
+            <h2>Visible momentum already supports a stronger institutional conversation</h2>
+          </div>
+          <div class="grid-4">
+            <article class="stat-card">
+              <div class="stat-value">7.69M</div>
+              <div class="stat-label">2023 Revenue</div>
+              <div class="stat-note">Visible annual base from the reviewed financial file.</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-value">8.67M</div>
+              <div class="stat-label">2024 Revenue</div>
+              <div class="stat-note">Year-on-year commercial expansion.</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-value">9.06M</div>
+              <div class="stat-label">2025 Revenue</div>
+              <div class="stat-note">Strongest visible annual level in the current source material.</div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-value">3.31M</div>
+              <div class="stat-label">2026 H1 Revenue</div>
+              <div class="stat-note">Half-year visibility supporting buyer dialogue.</div>
+            </article>
+          </div>
+          <div class="grid-2">
+            <div class="summary-card"><strong>MPL Growth</strong><p>National structure and organised calendar flow support category credibility.</p></div>
+            <div class="summary-card"><strong>West Coast Demand</strong><p>Residential, tourism, and leisure growth continue to strengthen the address.</p></div>
+          </div>
+        </div>
+        <div class="image-card">
+          <img data-asset="group-mpl.jpg" alt="League and market momentum" />
+          <div class="image-caption">
+            <div class="micro">Growth Context</div>
+            <p>Event activity and competitive visibility reinforce the west-coast narrative.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="ecosystem" class="page standard" data-photo="junior-prize.jpg">
       <div class="page-index">07 / Ecosystem</div>
-      <div class="section-head">
-        <div class="eyebrow">West Coast Ecosystem</div>
-        <h2>A premium demand cluster that supports long-term venue relevance</h2>
-        <p>Urban benefits from overlapping residential, tourism, expatriate, family, and corporate demand rather than relying on one narrow customer source.</p>
-      </div>
-      <div class="ecosystem-band">
-        <article class="band-card"><strong>Residential Wealth</strong><p>Premium homes and high-income households strengthen recurring leisure demand.</p></article>
-        <article class="band-card"><strong>Expat Lifestyle</strong><p>Sport-driven habits support frequency, referrals, and higher spending profiles.</p></article>
-        <article class="band-card"><strong>Tourism Flow</strong><p>Visitors and hospitality groups create demand for destination-friendly activities.</p></article>
-        <article class="band-card"><strong>Corporate Use</strong><p>Team events and private bookings widen venue utility beyond members.</p></article>
-        <article class="band-card"><strong>Family Retention</strong><p>Junior pathways improve repeat traffic across multiple age groups.</p></article>
-        <article class="band-card"><strong>Brand Visibility</strong><p>Events and community presence keep Urban commercially visible in the west coast market.</p></article>
+      <div class="spotlight-split">
+        <div class="card">
+          <div class="section-head">
+            <div class="eyebrow">West Coast Ecosystem</div>
+            <h2>A premium demand cluster that supports long-term venue relevance</h2>
+            <p>Urban benefits from overlapping residential, tourism, expatriate, family, and corporate demand rather than relying on one narrow customer source.</p>
+          </div>
+          <div class="ecosystem-band">
+            <article class="band-card"><strong>Residential Wealth</strong><p>Premium homes and high-income households strengthen recurring leisure demand.</p></article>
+            <article class="band-card"><strong>Expat Lifestyle</strong><p>Sport-driven habits support frequency, referrals, and higher spending profiles.</p></article>
+            <article class="band-card"><strong>Tourism Flow</strong><p>Visitors and hospitality groups create demand for destination-friendly activities.</p></article>
+            <article class="band-card"><strong>Corporate Use</strong><p>Team events and private bookings widen venue utility beyond members.</p></article>
+            <article class="band-card"><strong>Family Retention</strong><p>Junior pathways improve repeat traffic across multiple age groups.</p></article>
+            <article class="band-card"><strong>Brand Visibility</strong><p>Events and community presence keep Urban commercially visible in the west coast market.</p></article>
+          </div>
+        </div>
+        <div class="stacked-visuals">
+          <div class="image-card visual-tile">
+            <img data-asset="black-river-extra.jpg" alt="Premium west coast environment" />
+            <div class="image-caption">
+              <div class="micro">West Coast Environment</div>
+              <p>Residential and leisure quality reinforce perceived venue value.</p>
+            </div>
+          </div>
+          <div class="image-card visual-tile">
+            <img data-asset="photo-2026-03-06-15-01-13.jpg" alt="Premium community energy" />
+            <div class="image-caption">
+              <div class="micro">Community Density</div>
+              <p>Visible social energy supports referrals and retention.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1095,29 +1189,51 @@
 
     <section id="rationale" class="page standard" data-photo="urban-black-river.jpeg">
       <div class="page-index">09 / Rationale</div>
-      <div class="section-head">
-        <div class="eyebrow">Transaction Rationale</div>
-        <h2>Why the asset deserves investor attention now</h2>
-      </div>
-      <div class="grid-4">
-        <article class="tile"><div><strong>Scarcity</strong><p>Visible west-coast operating base in a high-value corridor.</p></div><div class="chip">location premium</div></article>
-        <article class="tile"><div><strong>Execution</strong><p>Existing infrastructure and operating history reduce activation risk.</p></div><div class="chip">de-risked base</div></article>
-        <article class="tile"><div><strong>Demand</strong><p>Residential, tourism, expatriate, family, and corporate usage can all support the platform.</p></div><div class="chip">multi-source demand</div></article>
-        <article class="tile"><div><strong>Optionality</strong><p>Brand, events, academy, hospitality, retail, and sponsorship extend upside.</p></div><div class="chip">platform upside</div></article>
+      <div class="split-layout">
+        <div class="image-card">
+          <img data-asset="img-2444.png" alt="Transaction rationale visual" />
+          <div class="image-caption">
+            <div class="micro">Rationale Visual</div>
+            <p>The asset already reads as a lifestyle platform rather than a simple court base.</p>
+          </div>
+        </div>
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Transaction Rationale</div>
+            <h2>Why the asset deserves investor attention now</h2>
+          </div>
+          <div class="grid-2">
+            <article class="tile"><div><strong>Scarcity</strong><p>Visible west-coast operating base in a high-value corridor.</p></div><div class="chip">location premium</div></article>
+            <article class="tile"><div><strong>Execution</strong><p>Existing infrastructure and operating history reduce activation risk.</p></div><div class="chip">de-risked base</div></article>
+            <article class="tile"><div><strong>Demand</strong><p>Residential, tourism, expatriate, family, and corporate usage can all support the platform.</p></div><div class="chip">multi-source demand</div></article>
+            <article class="tile"><div><strong>Optionality</strong><p>Brand, events, academy, hospitality, retail, and sponsorship extend upside.</p></div><div class="chip">platform upside</div></article>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="buyers" class="page standard" data-photo="group-mpl.jpg">
       <div class="page-index">10 / Buyers</div>
-      <div class="section-head">
-        <div class="eyebrow">Buyer Universe</div>
-        <h2>Most logical acquirers</h2>
-      </div>
-      <div class="grid-2">
-        <div class="summary-card"><strong>Hospitality Groups</strong><p>Turn Urban into a guest-facing sport and destination experience layer.</p></div>
-        <div class="summary-card"><strong>Real Estate Developers</strong><p>Use the platform as a live amenity strengthening residences and mixed-use schemes.</p></div>
-        <div class="summary-card"><strong>Family Offices</strong><p>Acquire a differentiated operating lifestyle asset with brand and growth value.</p></div>
-        <div class="summary-card"><strong>Strategic Operators</strong><p>Build a regional platform around sports, community, events, and premium users.</p></div>
+      <div class="section-summary-layout">
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Buyer Universe</div>
+            <h2>Most logical acquirers</h2>
+          </div>
+          <div class="grid-2">
+            <div class="summary-card"><strong>Hospitality Groups</strong><p>Turn Urban into a guest-facing sport and destination experience layer.</p></div>
+            <div class="summary-card"><strong>Real Estate Developers</strong><p>Use the platform as a live amenity strengthening residences and mixed-use schemes.</p></div>
+            <div class="summary-card"><strong>Family Offices</strong><p>Acquire a differentiated operating lifestyle asset with brand and growth value.</p></div>
+            <div class="summary-card"><strong>Strategic Operators</strong><p>Build a regional platform around sports, community, events, and premium users.</p></div>
+          </div>
+        </div>
+        <div class="image-card summary-visual-card">
+          <img data-asset="img-8070.jpg" alt="Buyer universe visual" />
+          <div class="image-caption">
+            <div class="micro">Strategic Fit</div>
+            <p>The asset can plug naturally into hospitality, mixed-use, or family office strategies.</p>
+          </div>
+        </div>
       </div>
     </section>
 
