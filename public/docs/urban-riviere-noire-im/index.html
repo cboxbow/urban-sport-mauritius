@@ -198,8 +198,8 @@
       border-radius: var(--radius-xl);
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
-        linear-gradient(140deg, rgba(210, 180, 138, 0.06), transparent 28%),
-        rgba(7, 10, 15, 0.56);
+        linear-gradient(140deg, rgba(210, 180, 138, 0.05), transparent 28%),
+        rgba(7, 10, 15, 0.42);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -263,7 +263,8 @@
 
     .page.hero {
       padding: 0;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .page-index {
@@ -284,10 +285,14 @@
     }
 
     .hero-media,
-    .hero-overlay,
-    .hero-content {
+    .hero-overlay {
       position: absolute;
       inset: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      inset: auto;
     }
 
     .hero-media img {
@@ -310,6 +315,7 @@
       gap: 24px;
       align-items: end;
       padding: 28px;
+      min-height: 100%;
     }
 
     .hero-panel,
@@ -672,11 +678,11 @@
     }
 
     .page.hero .page-contact {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 14px;
-      margin-top: 0;
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      margin-top: 18px;
     }
 
     .page-contact-identity {
@@ -857,12 +863,6 @@
         align-items: flex-start;
       }
 
-      .page.hero .page-contact {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-      }
-
       .page-contact-identity {
         width: 100%;
       }
@@ -884,7 +884,7 @@
 </head>
 <body>
   <div class="video-background" aria-hidden="true">
-    <video id="deck-background-video" data-video-local="URBAN RNOIRE - SALE/OCT M1000 Padel League.mov" data-video-web="/docs/urban-riviere-noire-im/assets/urban-video.mp4" autoplay muted loop playsinline></video>
+    <video id="deck-background-video" src="/docs/urban-riviere-noire-im/assets/urban-video.mp4" data-video-local="URBAN RNOIRE - SALE/OCT M1000 Padel League.mov" data-video-web="/docs/urban-riviere-noire-im/assets/urban-video.mp4" autoplay muted loop playsinline preload="auto"></video>
   </div>
 
   <main class="shell">
