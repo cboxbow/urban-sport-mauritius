@@ -209,9 +209,39 @@
     }
 
     .page.standard {
-      padding: 28px;
+      padding: 28px 28px 108px;
       align-content: start;
       gap: 18px;
+      isolation: isolate;
+    }
+
+    .page.standard::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: var(--page-photo);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+      transform: scale(1.02);
+      pointer-events: none;
+    }
+
+    .page.standard::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(7, 10, 15, 0.1), rgba(7, 10, 15, 0.62) 40%, rgba(7, 10, 15, 0.88)),
+        linear-gradient(90deg, rgba(7, 10, 15, 0.76), rgba(7, 10, 15, 0.4) 46%, rgba(7, 10, 15, 0.72));
+      pointer-events: none;
+    }
+
+    .page.standard > * {
+      position: relative;
+      z-index: 2;
     }
 
     .page.hero {
@@ -387,6 +417,22 @@
       backdrop-filter: blur(10px);
     }
 
+    .section-summary-layout {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .summary-visual-card {
+      min-height: 100%;
+    }
+
+    .summary-visual-card img {
+      min-height: 100%;
+      filter: brightness(0.92) contrast(1.04) saturate(1.04);
+    }
+
     .eyebrow,
     .micro {
       color: var(--gold-strong);
@@ -549,6 +595,70 @@
       gap: 10px;
     }
 
+    .page-contact {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 18px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      background: rgba(7, 10, 15, 0.8);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .page-contact-identity {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .page-contact-logo {
+      width: 84px;
+      flex: 0 0 auto;
+      opacity: 0.96;
+    }
+
+    .page-contact-copy {
+      display: grid;
+      gap: 2px;
+    }
+
+    .page-contact-label {
+      color: var(--gold-strong);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .page-contact-name {
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .page-contact-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 18px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .page-contact-meta a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
     .price-number {
       font-size: clamp(34px, 4vw, 56px);
       line-height: 0.94;
@@ -579,6 +689,7 @@
       }
 
       .hero-content,
+      .section-summary-layout,
       .grid-4,
       .grid-3,
       .grid-2,
@@ -595,7 +706,7 @@
 
     @media (max-width: 860px) {
       :root {
-        --page-h: calc(100vh - 176px);
+        --page-h: calc(100vh - 214px);
       }
 
       .shell {
@@ -607,8 +718,20 @@
         padding: 14px 16px;
       }
 
+      .nav {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar {
+        display: none;
+      }
+
       .page.standard {
-        padding: 20px;
+        padding: 18px 18px 124px;
       }
 
       .hero-content {
@@ -652,6 +775,32 @@
         left: 10px;
         bottom: 10px;
         justify-content: space-between;
+      }
+
+      .page-contact {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        padding: 12px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page-contact-identity {
+        width: 100%;
+      }
+
+      .page-contact-logo {
+        width: 72px;
+      }
+
+      .page-contact-name {
+        font-size: 16px;
+      }
+
+      .page-contact-meta {
+        justify-content: flex-start;
+        font-size: 13px;
       }
     }
   </style>
@@ -738,46 +887,57 @@
       </div>
     </section>
 
-    <section id="summary" class="page standard">
+    <section id="summary" class="page standard" data-photo="black-river-aerial.jpeg">
       <div class="page-index">02 / Summary</div>
-      <div class="section-head">
-        <div class="eyebrow">Executive Summary</div>
-        <h2>Why this asset matters</h2>
-        <p>Urban Sport Black River combines location, brand, infrastructure, and community inside one premium west-coast operating platform.</p>
-      </div>
-      <div class="grid-4">
-        <article class="tile">
-          <div>
-            <strong>Location</strong>
-            <p>Black River address inside a premium leisure and residential corridor.</p>
+      <div class="section-summary-layout">
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Executive Summary</div>
+            <h2>Why this asset matters</h2>
+            <p>Urban Sport Black River combines location, brand, infrastructure, and community inside one premium west-coast operating platform.</p>
           </div>
-          <div class="chip">west coast premium</div>
-        </article>
-        <article class="tile">
-          <div>
-            <strong>Platform</strong>
-            <p>Padel, Foot Five, shop, snack bar, events, and coaching already exist on site.</p>
+          <div class="grid-2">
+            <article class="tile">
+              <div>
+                <strong>Location</strong>
+                <p>Black River address inside a premium leisure and residential corridor.</p>
+              </div>
+              <div class="chip">west coast premium</div>
+            </article>
+            <article class="tile">
+              <div>
+                <strong>Platform</strong>
+                <p>Padel, Foot Five, shop, snack bar, events, and coaching already exist on site.</p>
+              </div>
+              <div class="chip">multi-revenue</div>
+            </article>
+            <article class="tile">
+              <div>
+                <strong>Brand</strong>
+                <p>Recognisable Urban identity with visible community and event history.</p>
+              </div>
+              <div class="chip">market-ready</div>
+            </article>
+            <article class="tile">
+              <div>
+                <strong>Transaction</strong>
+                <p>Acquisition of a lifestyle growth vehicle, not a single-line sports operation.</p>
+              </div>
+              <div class="chip">Rs 35M</div>
+            </article>
           </div>
-          <div class="chip">multi-revenue</div>
-        </article>
-        <article class="tile">
-          <div>
-            <strong>Brand</strong>
-            <p>Recognisable Urban identity with visible community and event history.</p>
+        </div>
+        <div class="image-card summary-visual-card">
+          <img data-asset="black-river-aerial.jpeg" alt="Executive summary visual" />
+          <div class="image-caption">
+            <div class="micro">Summary Visual</div>
+            <p>Immediate view of the venue and its premium west-coast positioning.</p>
           </div>
-          <div class="chip">market-ready</div>
-        </article>
-        <article class="tile">
-          <div>
-            <strong>Transaction</strong>
-            <p>Acquisition of a lifestyle growth vehicle, not a single-line sports operation.</p>
-          </div>
-          <div class="chip">Rs 35M</div>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section id="location" class="page standard">
+    <section id="location" class="page standard" data-photo="black-river-overlook.jpeg">
       <div class="page-index">03 / Location</div>
       <div class="split-layout">
         <div class="card">
@@ -812,7 +972,7 @@
       </div>
     </section>
 
-    <section id="infrastructure" class="page standard">
+    <section id="infrastructure" class="page standard" data-photo="img-2715.png">
       <div class="page-index">04 / Infrastructure</div>
       <div class="section-head">
         <div class="eyebrow">Infrastructure & Revenue Streams</div>
@@ -830,7 +990,7 @@
       </div>
     </section>
 
-    <section id="community" class="page standard">
+    <section id="community" class="page standard" data-photo="community-women.jpg">
       <div class="page-index">05 / Community</div>
       <div class="hero-split">
         <div class="image-card">
@@ -856,7 +1016,7 @@
       </div>
     </section>
 
-    <section id="market" class="page standard">
+    <section id="market" class="page standard" data-photo="group-mpl.jpg">
       <div class="page-index">06 / Market</div>
       <div class="section-head">
         <div class="eyebrow">A Market Entering Its Growth Phase</div>
@@ -890,7 +1050,7 @@
       </div>
     </section>
 
-    <section id="ecosystem" class="page standard">
+    <section id="ecosystem" class="page standard" data-photo="junior-prize.jpg">
       <div class="page-index">07 / Ecosystem</div>
       <div class="section-head">
         <div class="eyebrow">West Coast Ecosystem</div>
@@ -907,7 +1067,7 @@
       </div>
     </section>
 
-    <section id="growth" class="page standard">
+    <section id="growth" class="page standard" data-photo="img-2056.png">
       <div class="page-index">08 / Growth</div>
       <div class="hero-split">
         <div class="card">
@@ -933,7 +1093,7 @@
       </div>
     </section>
 
-    <section id="rationale" class="page standard">
+    <section id="rationale" class="page standard" data-photo="urban-black-river.jpeg">
       <div class="page-index">09 / Rationale</div>
       <div class="section-head">
         <div class="eyebrow">Transaction Rationale</div>
@@ -947,7 +1107,7 @@
       </div>
     </section>
 
-    <section id="buyers" class="page standard">
+    <section id="buyers" class="page standard" data-photo="group-mpl.jpg">
       <div class="page-index">10 / Buyers</div>
       <div class="section-head">
         <div class="eyebrow">Buyer Universe</div>
@@ -961,7 +1121,7 @@
       </div>
     </section>
 
-    <section id="opportunity" class="page standard">
+    <section id="opportunity" class="page standard" data-photo="urban-black-river.jpeg">
       <div class="page-index">11 / Opportunity</div>
       <div class="split-layout">
         <div class="price-box">
@@ -1019,6 +1179,13 @@
         if (asset) node.src = base + asset;
       });
 
+      document.querySelectorAll("[data-photo]").forEach((page) => {
+        const asset = page.getAttribute("data-photo");
+        if (asset) {
+          page.style.setProperty("--page-photo", `url("${base + asset}")`);
+        }
+      });
+
       const video = document.getElementById("deck-background-video");
       const soundToggle = document.getElementById("sound-toggle");
       const pages = Array.from(document.querySelectorAll(".page"));
@@ -1027,6 +1194,27 @@
       const nextPageButton = document.getElementById("next-page");
       const pagerIndicator = document.getElementById("pager-indicator");
       let currentPageIndex = 0;
+      const contactTemplate = `
+        <div class="page-contact">
+          <div class="page-contact-identity">
+            <img class="page-contact-logo" src="${base}urban-sport-primary-dark.png" alt="Urban Sport" />
+            <div class="page-contact-copy">
+              <div class="page-contact-label">Primary contact</div>
+              <div class="page-contact-name">Pascal Hoffmann</div>
+            </div>
+          </div>
+          <div class="page-contact-meta">
+            <span>+230 5258 0551</span>
+            <a href="mailto:pascal@urbansport.mu">pascal@urbansport.mu</a>
+          </div>
+        </div>
+      `;
+
+      pages.forEach((page) => {
+        if (!page.querySelector(".page-contact")) {
+          page.insertAdjacentHTML("beforeend", contactTemplate);
+        }
+      });
 
       if (video) {
         const source = isLocal
