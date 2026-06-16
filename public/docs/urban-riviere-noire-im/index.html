@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,36 +8,34 @@
     :root {
       --bg: #040507;
       --ink: #f5efe6;
-      --muted: rgba(245, 239, 230, 0.72);
-      --muted-soft: rgba(245, 239, 230, 0.52);
+      --muted: rgba(245, 239, 230, 0.74);
+      --muted-soft: rgba(245, 239, 230, 0.54);
       --line: rgba(255, 255, 255, 0.1);
-      --panel: rgba(8, 11, 16, 0.78);
-      --panel-strong: rgba(7, 10, 15, 0.9);
+      --panel: rgba(8, 11, 16, 0.82);
+      --panel-soft: rgba(10, 14, 20, 0.62);
       --gold: #d2b48a;
-      --gold-strong: #e3c9a2;
-      --gold-soft: rgba(210, 180, 138, 0.12);
-      --navy: rgba(40, 52, 78, 0.48);
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+      --gold-strong: #e4cbab;
+      --gold-soft: rgba(210, 180, 138, 0.1);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
       --radius-xl: 34px;
       --radius-lg: 24px;
       --radius-md: 18px;
-      --max: 1440px;
+      --shell: min(calc(100vw - 34px), 1450px);
+      --page-h: calc(100vh - 122px);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
+    html, body {
+      width: 100%;
+      height: 100%;
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
+      overflow: hidden;
       background: var(--bg);
-      overflow-x: hidden;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body::before {
@@ -46,9 +44,9 @@
       inset: 0;
       z-index: 0;
       background:
-        radial-gradient(circle at 20% 14%, rgba(210, 180, 138, 0.12), transparent 24%),
-        radial-gradient(circle at 82% 22%, rgba(77, 102, 157, 0.12), transparent 22%),
-        linear-gradient(180deg, rgba(4, 5, 7, 0.2), rgba(4, 5, 7, 0.66) 55%, rgba(4, 5, 7, 0.92));
+        radial-gradient(circle at 18% 16%, rgba(210, 180, 138, 0.12), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(72, 90, 135, 0.12), transparent 20%),
+        linear-gradient(180deg, rgba(4, 5, 7, 0.18), rgba(4, 5, 7, 0.66) 56%, rgba(4, 5, 7, 0.92));
       pointer-events: none;
     }
 
@@ -56,8 +54,8 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: #020304;
       overflow: hidden;
+      background: #020304;
     }
 
     .video-background video {
@@ -65,31 +63,33 @@
       height: 100%;
       object-fit: cover;
       transform: scale(1.04);
-      filter: brightness(0.9) contrast(1.08) saturate(1.03);
+      filter: brightness(0.92) contrast(1.08) saturate(1.03);
     }
 
-    .page-shell {
+    .shell {
       position: relative;
       z-index: 1;
-      width: min(calc(100vw - 40px), var(--max));
+      width: var(--shell);
+      height: 100vh;
       margin: 0 auto;
-      padding: 20px 0 56px;
+      padding: 16px 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
     .topbar {
-      position: sticky;
-      top: 14px;
-      z-index: 40;
       display: grid;
       grid-template-columns: auto 1fr auto auto;
-      gap: 18px;
       align-items: center;
-      padding: 18px 24px;
+      gap: 16px;
+      padding: 16px 22px;
       border: 1px solid var(--line);
-      border-radius: 22px;
-      background: rgba(7, 10, 15, 0.78);
+      border-radius: 24px;
+      background: rgba(7, 10, 15, 0.8);
       backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
+      flex: 0 0 auto;
     }
 
     .brand-logo {
@@ -97,85 +97,136 @@
       display: block;
     }
 
-    .nav-links {
+    .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
       justify-content: center;
+      gap: 9px;
+    }
+
+    .nav-link,
+    .sound-toggle,
+    .pager-btn,
+    .price-pill,
+    .pager-indicator {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      border-radius: 999px;
     }
 
     .nav-link {
       color: var(--muted);
       text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 11px 14px;
+      padding: 10px 14px;
       border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 999px;
       background: rgba(255, 255, 255, 0.02);
-      transition: 0.22s ease;
+      transition: 0.18s ease;
     }
 
     .nav-link:hover,
     .nav-link.active {
       color: var(--ink);
-      border-color: rgba(210, 180, 138, 0.45);
-      background: rgba(210, 180, 138, 0.09);
-    }
-
-    .price-pill,
-    .sound-toggle {
-      border-radius: 999px;
-      padding: 12px 18px;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      white-space: nowrap;
+      border-color: rgba(210, 180, 138, 0.44);
+      background: rgba(210, 180, 138, 0.12);
     }
 
     .price-pill {
-      border: 1px solid rgba(210, 180, 138, 0.34);
-      background: linear-gradient(180deg, rgba(210, 180, 138, 0.17), rgba(210, 180, 138, 0.08));
+      padding: 12px 16px;
+      border: 1px solid rgba(210, 180, 138, 0.32);
+      background: linear-gradient(180deg, rgba(210, 180, 138, 0.18), rgba(210, 180, 138, 0.08));
       color: var(--gold-strong);
+      white-space: nowrap;
     }
 
     .sound-toggle {
       appearance: none;
+      padding: 12px 16px;
       border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.03);
       color: var(--muted);
       cursor: pointer;
-      transition: 0.2s ease;
+      white-space: nowrap;
     }
 
-    .sound-toggle:hover {
+    .pager {
+      position: fixed;
+      right: 28px;
+      bottom: 24px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 10, 15, 0.78);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .pager-btn {
+      appearance: none;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
       color: var(--ink);
-      border-color: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+    }
+
+    .pager-btn:disabled {
+      opacity: 0.38;
+      cursor: default;
+    }
+
+    .pager-indicator {
+      min-width: 108px;
+      padding: 10px 14px;
+      text-align: center;
+      color: var(--gold-strong);
+      border: 1px solid rgba(210, 180, 138, 0.28);
+      background: rgba(210, 180, 138, 0.08);
     }
 
     .page {
+      display: none;
       position: relative;
-      min-height: 100vh;
-      margin-top: 22px;
-      padding: 42px;
+      flex: 1 1 auto;
+      height: var(--page-h);
+      min-height: var(--page-h);
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
       background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
         linear-gradient(140deg, rgba(210, 180, 138, 0.06), transparent 28%),
-        rgba(7, 10, 15, 0.55);
-      backdrop-filter: blur(6px);
+        rgba(7, 10, 15, 0.56);
       box-shadow: var(--shadow);
       overflow: hidden;
-      scroll-margin-top: 112px;
     }
 
-    .page.hero-page {
+    .page.active {
+      display: grid;
+    }
+
+    .page.standard {
+      padding: 28px;
+      align-content: start;
+      gap: 18px;
+    }
+
+    .page.hero {
       padding: 0;
-      display: flex;
-      align-items: stretch;
-      min-height: calc(100vh - 34px);
+    }
+
+    .page-index {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      z-index: 5;
+      color: var(--muted-soft);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
     }
 
     .hero-media,
@@ -189,362 +240,285 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.72) contrast(1.08) saturate(1.02);
+      filter: brightness(0.76) contrast(1.08) saturate(1.02);
     }
 
     .hero-overlay {
       background:
-        linear-gradient(90deg, rgba(5, 7, 10, 0.8) 0%, rgba(5, 7, 10, 0.6) 40%, rgba(5, 7, 10, 0.24) 100%),
-        linear-gradient(180deg, rgba(5, 7, 10, 0.14), rgba(5, 7, 10, 0.54) 78%, rgba(5, 7, 10, 0.82));
+        linear-gradient(90deg, rgba(5, 7, 10, 0.84) 0%, rgba(5, 7, 10, 0.62) 42%, rgba(5, 7, 10, 0.24) 100%),
+        linear-gradient(180deg, rgba(5, 7, 10, 0.12), rgba(5, 7, 10, 0.56) 76%, rgba(5, 7, 10, 0.82));
     }
 
     .hero-content {
-      position: relative;
       z-index: 2;
       display: grid;
       grid-template-columns: 1.08fr 0.72fr;
-      gap: 24px;
+      gap: 22px;
       align-items: end;
-      padding: 48px;
+      padding: 34px;
+    }
+
+    .hero-panel,
+    .mini-stat,
+    .card,
+    .tile,
+    .stat-card,
+    .summary-card,
+    .image-card,
+    .band-card,
+    .price-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+        rgba(8, 11, 16, 0.78);
+      box-shadow: var(--shadow);
     }
 
     .hero-panel {
-      max-width: 760px;
-      padding: 34px 36px 38px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 30px;
-      background: rgba(7, 10, 15, 0.48);
+      padding: 28px 30px 30px;
+      background: rgba(7, 10, 15, 0.5);
       backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
+      max-width: 760px;
     }
 
     .hero-side {
       display: grid;
-      gap: 18px;
+      gap: 16px;
       align-self: end;
     }
 
-    .mini-stat {
-      padding: 22px 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      background: rgba(7, 10, 15, 0.54);
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
+    .mini-stat,
+    .card,
+    .tile,
+    .stat-card,
+    .summary-card,
+    .band-card,
+    .price-box {
+      padding: 20px;
     }
 
-    .mini-stat .micro {
+    .mini-stat strong,
+    .tile strong,
+    .summary-card strong,
+    .band-card strong,
+    .card strong {
       display: block;
       margin-bottom: 10px;
-    }
-
-    .mini-stat strong {
-      display: block;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 30px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    .mini-stat p {
-      font-size: 15px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
-
-    .eyebrow,
-    .micro,
-    .kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.26em;
-      font-size: 11px;
       color: var(--gold-strong);
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      letter-spacing: 0.035em;
-      color: var(--ink);
-    }
-
-    h1 {
-      font-size: clamp(58px, 8vw, 108px);
-      line-height: 0.92;
-      margin-top: 18px;
-      max-width: 720px;
-    }
-
-    h2 {
-      font-size: clamp(32px, 4.8vw, 64px);
-      line-height: 0.96;
-      max-width: 900px;
-    }
-
-    h3 {
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      color: var(--gold-strong);
-    }
-
-    p {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.72;
-      color: var(--muted);
-    }
-
-    .lead {
-      margin-top: 20px;
-      font-size: 22px;
-      line-height: 1.65;
-      color: var(--ink);
-      max-width: 620px;
-    }
-
-    .section-head {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .section-copy {
-      max-width: 720px;
-      color: var(--ink);
-    }
-
-    .hero-subtitle {
-      margin-top: 8px;
-      color: var(--ink);
-      font-size: 24px;
-    }
-
-    .metric-row,
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .metric-pill,
-    .chip {
-      padding: 12px 16px;
-      border: 1px solid rgba(210, 180, 138, 0.28);
-      border-radius: 999px;
-      background: rgba(210, 180, 138, 0.08);
-      color: var(--gold-strong);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .grid-2,
-    .grid-3,
-    .grid-4 {
-      display: grid;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
-    .card,
-    .tile,
-    .image-card,
-    .summary-card {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01)),
-        rgba(8, 11, 16, 0.78);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .card,
-    .tile,
-    .summary-card {
-      padding: 26px;
-    }
-
-    .tile {
-      min-height: 210px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .tile strong,
-    .summary-card strong {
-      display: block;
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-strong);
-      margin-bottom: 12px;
-    }
-
-    .tile p,
-    .summary-card p {
-      font-size: 17px;
-      color: var(--ink);
-    }
-
-    .stat {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(48px, 6vw, 74px);
-      line-height: 0.94;
-      color: var(--ink);
-    }
-
-    .stat-label {
-      margin-top: 12px;
-      font-size: 11px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--gold-strong);
-    }
-
-    .stat-note {
-      margin-top: 16px;
-      font-size: 16px;
-      color: var(--muted);
-      line-height: 1.6;
     }
 
     .image-card {
+      position: relative;
+      overflow: hidden;
       min-height: 100%;
     }
 
     .image-card img {
       width: 100%;
       height: 100%;
-      min-height: 380px;
       object-fit: cover;
-      filter: brightness(0.76) contrast(1.04) saturate(1.02);
+      min-height: 220px;
+      filter: brightness(0.8) contrast(1.05);
     }
 
     .image-caption {
       position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 18px;
-      padding: 18px 18px 16px;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      padding: 14px 16px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 18px;
       background: rgba(7, 10, 15, 0.72);
       backdrop-filter: blur(10px);
     }
 
-    .image-caption p {
-      margin-top: 8px;
-      font-size: 15px;
-      color: var(--ink);
-      line-height: 1.55;
-    }
-
-    .split-hero {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      align-items: stretch;
-      min-height: calc(100vh - 160px);
-    }
-
-    .stack {
-      display: grid;
-      gap: 22px;
-    }
-
-    .opportunity-banner {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-      padding: 14px 18px;
-      border: 1px solid rgba(210, 180, 138, 0.28);
-      border-radius: 999px;
-      background: rgba(210, 180, 138, 0.08);
+    .eyebrow,
+    .micro {
       color: var(--gold-strong);
-      font-size: 12px;
-      letter-spacing: 0.18em;
+      font-size: 11px;
       text-transform: uppercase;
+      letter-spacing: 0.22em;
     }
 
-    .full-quote {
-      max-width: 900px;
-      margin-top: 12px;
-      font-size: clamp(28px, 4vw, 50px);
-      line-height: 1.04;
+    h1,
+    h2,
+    .big-quote,
+    .price-number {
+      margin: 0;
       font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.03em;
       color: var(--ink);
     }
 
+    h1 {
+      margin-top: 14px;
+      font-size: clamp(58px, 7vw, 100px);
+      line-height: 0.9;
+      max-width: 720px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.7vw, 54px);
+      line-height: 0.96;
+      max-width: 980px;
+    }
+
+    .hero-subtitle {
+      margin-top: 8px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.56;
+    }
+
+    .lead {
+      margin-top: 16px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.44;
+      max-width: 620px;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4,
+    .hero-split,
+    .split-layout {
+      display: grid;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .hero-split { grid-template-columns: 1.02fr 0.98fr; min-height: 100%; }
+    .split-layout { grid-template-columns: 0.96fr 1.04fr; min-height: 100%; }
+
+    .metric-row,
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .metric-pill,
+    .chip {
+      padding: 10px 14px;
+      border: 1px solid rgba(210, 180, 138, 0.28);
+      border-radius: 999px;
+      background: rgba(210, 180, 138, 0.08);
+      color: var(--gold-strong);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .opportunity-banner {
+      display: inline-flex;
+      margin-top: 18px;
+      padding: 12px 16px;
+      border: 1px solid rgba(210, 180, 138, 0.32);
+      border-radius: 999px;
+      background: rgba(210, 180, 138, 0.1);
+      color: var(--gold-strong);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .tile,
+    .stat-card {
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tile p,
+    .summary-card p,
+    .band-card p,
+    .mini-stat p,
+    .card p {
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .stat-value {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(36px, 4.6vw, 58px);
+      line-height: 0.94;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: var(--gold-strong);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-bottom: 10px;
+    }
+
+    .stat-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
     .ecosystem-band {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 24px;
+      gap: 16px;
     }
 
-    .band-card {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-        rgba(8, 11, 16, 0.72);
-      box-shadow: var(--shadow);
+    .price-box {
+      display: grid;
+      align-content: start;
+      gap: 10px;
     }
 
-    .band-card strong {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold-strong);
+    .price-number {
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 0.94;
     }
 
-    .band-card p {
-      font-size: 16px;
-      line-height: 1.62;
-      color: var(--ink);
+    .big-quote {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.02;
+      max-width: 920px;
     }
 
     .footer-note {
-      margin-top: 18px;
+      margin-top: 14px;
+      color: var(--muted-soft);
       font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted-soft);
-    }
-
-    .page-index {
-      position: absolute;
-      top: 28px;
-      right: 30px;
-      color: var(--muted-soft);
-      font-size: 11px;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1280px) {
       .topbar {
         grid-template-columns: 1fr;
         text-align: center;
@@ -554,69 +528,76 @@
         margin: 0 auto;
       }
 
-      .nav-links {
-        justify-content: center;
-      }
-
-      .grid-2,
-      .grid-3,
-      .grid-4,
-      .split-hero,
       .hero-content,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .hero-split,
+      .split-layout,
       .ecosystem-band {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 820px) {
-      .page-shell {
-        width: min(100vw - 18px, 100%);
-        padding: 10px 0 34px;
+    @media (max-width: 860px) {
+      :root {
+        --page-h: calc(100vh - 176px);
+      }
+
+      .shell {
+        width: min(100vw - 14px, 100%);
+        padding: 8px 0 8px;
       }
 
       .topbar {
-        top: 8px;
-        padding: 16px 18px;
+        padding: 14px 16px;
       }
 
-      .page {
-        padding: 28px;
-        min-height: auto;
+      .page.standard {
+        padding: 20px;
       }
 
       .hero-content {
-        padding: 28px;
+        padding: 22px;
       }
 
-      .hero-panel {
-        padding: 24px;
-      }
-
-      h1 {
-        font-size: clamp(44px, 14vw, 76px);
-      }
-
-      h2 {
-        font-size: clamp(28px, 10vw, 44px);
-      }
-
-      p,
-      .lead,
-      .tile p,
-      .summary-card p {
-        font-size: 16px;
-      }
-
-      .nav-link,
-      .price-pill,
-      .sound-toggle,
-      .metric-pill,
-      .chip {
-        font-size: 10px;
+      .hero-panel,
+      .mini-stat,
+      .tile,
+      .stat-card,
+      .summary-card,
+      .band-card,
+      .price-box {
+        padding: 16px;
       }
 
       .image-card img {
-        min-height: 300px;
+        min-height: 180px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 12vw, 74px);
+      }
+
+      h2 {
+        font-size: clamp(24px, 7vw, 38px);
+      }
+
+      .hero-subtitle,
+      .lead,
+      p,
+      .tile p,
+      .summary-card p,
+      .band-card p,
+      .mini-stat p {
+        font-size: 14px;
+      }
+
+      .pager {
+        right: 10px;
+        left: 10px;
+        bottom: 10px;
+        justify-content: space-between;
       }
     }
   </style>
@@ -626,11 +607,12 @@
     <video id="deck-background-video" data-video-local="URBAN RNOIRE - SALE/OCT M1000 Padel League.mov" data-video-web="/docs/urban-riviere-noire-im/assets/urban-video.mp4" autoplay muted loop playsinline></video>
   </div>
 
-  <main class="page-shell">
+  <main class="shell">
     <header class="topbar">
       <img class="brand-logo" data-asset="urban-sport-primary-dark.png" alt="Urban Sport" />
-      <nav class="nav-links">
+      <nav class="nav">
         <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#summary">Summary</a>
         <a class="nav-link" href="#location">Location</a>
         <a class="nav-link" href="#infrastructure">Infrastructure</a>
         <a class="nav-link" href="#community">Community</a>
@@ -640,15 +622,22 @@
         <a class="nav-link" href="#rationale">Rationale</a>
         <a class="nav-link" href="#buyers">Buyers</a>
         <a class="nav-link" href="#opportunity">Opportunity</a>
+        <a class="nav-link" href="#closing">Closing</a>
       </nav>
       <div class="price-pill">For Sale - Rs 35 Million</div>
       <button id="sound-toggle" class="sound-toggle" type="button">Enable soundtrack</button>
     </header>
 
-    <section id="home" class="page hero-page">
+    <div class="pager" aria-label="Page navigation">
+      <button id="prev-page" class="pager-btn" type="button">Prev</button>
+      <div id="pager-indicator" class="pager-indicator">01 / 12</div>
+      <button id="next-page" class="pager-btn" type="button">Next</button>
+    </div>
+
+    <section id="home" class="page hero active">
       <div class="page-index">01 / Home</div>
       <div class="hero-media">
-        <img data-asset="black-river-aerial-master.png" alt="Urban Sport Black River aerial hero" />
+        <img data-asset="black-river-aerial-master.png" alt="Urban Sport Black River hero aerial" />
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -656,7 +645,7 @@
           <div class="eyebrow">Strategic Acquisition Opportunity</div>
           <h1>Urban Sport Black River</h1>
           <p class="hero-subtitle">West Coast Lifestyle & Sports Platform</p>
-          <p class="lead">A premium operating venue positioned inside Mauritius' most desirable west-coast lifestyle corridor.</p>
+          <p class="lead">A premium operating venue positioned inside Mauritius's most desirable west-coast lifestyle corridor.</p>
           <div class="metric-row">
             <div class="metric-pill">4 padel courts</div>
             <div class="metric-pill">1 foot five</div>
@@ -668,367 +657,282 @@
         </div>
         <div class="hero-side">
           <div class="mini-stat">
-            <span class="micro">Acquisition Lens</span>
+            <div class="micro">Acquisition Lens</div>
             <strong>West Coast Asset</strong>
-            <p>Positioned inside Mauritius' highest-value leisure, residential, and expatriate corridor.</p>
+            <p>Positioned inside a premium residential, leisure, and expatriate basin.</p>
           </div>
           <div class="mini-stat">
-            <span class="micro">Platform Mix</span>
+            <div class="micro">Platform Mix</div>
             <strong>Sport + Lifestyle</strong>
-            <p>Padel, Foot Five, hospitality, events, coaching, and community already coexist on site.</p>
+            <p>Padel, Foot Five, hospitality, events, coaching, and community already coexist.</p>
           </div>
           <div class="mini-stat">
-            <span class="micro">Seller Ask</span>
+            <div class="micro">Seller Ask</div>
             <strong>Rs 35 Million</strong>
-            <p>Presented as an operating lifestyle platform with brand, visibility, and monetisation optionality.</p>
+            <p>Presented as a branded lifestyle platform rather than a simple sports venue.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="summary" class="page">
-      <div class="page-index">02 / Why This Asset Matters</div>
+    <section id="summary" class="page standard">
+      <div class="page-index">02 / Summary</div>
       <div class="section-head">
         <div class="eyebrow">Executive Summary</div>
         <h2>Why this asset matters</h2>
-        <p class="section-copy">Urban Sport Black River is a branded lifestyle platform combining sport, hospitality, community, and west-coast visibility in one operating asset.</p>
+        <p>Urban Sport Black River combines location, brand, infrastructure, and community inside one premium west-coast operating platform.</p>
       </div>
       <div class="grid-4">
         <article class="tile">
           <div>
             <strong>Location</strong>
-            <p>Black River address inside a premium residential, expatriate, tourism, and leisure basin.</p>
+            <p>Black River address inside a premium leisure and residential corridor.</p>
           </div>
           <div class="chip">west coast premium</div>
         </article>
         <article class="tile">
           <div>
             <strong>Platform</strong>
-            <p>Padel, Foot Five, pro shop, snack bar, events, and coaching already coexist on site.</p>
+            <p>Padel, Foot Five, shop, snack bar, events, and coaching already exist on site.</p>
           </div>
           <div class="chip">multi-revenue</div>
         </article>
         <article class="tile">
           <div>
             <strong>Brand</strong>
-            <p>Recognisable Urban identity with event history, sponsor logic, and recurring player visibility.</p>
+            <p>Recognisable Urban identity with visible community and event history.</p>
           </div>
           <div class="chip">market-ready</div>
         </article>
         <article class="tile">
           <div>
             <strong>Transaction</strong>
-            <p>Acquisition of a lifestyle growth vehicle rather than a single-line sports operation.</p>
+            <p>Acquisition of a lifestyle growth vehicle, not a single-line sports operation.</p>
           </div>
           <div class="chip">Rs 35M</div>
         </article>
       </div>
     </section>
 
-    <section id="location" class="page">
+    <section id="location" class="page standard">
       <div class="page-index">03 / Location</div>
-      <div class="split-hero">
-        <div class="stack">
+      <div class="split-layout">
+        <div class="card">
           <div class="section-head">
             <div class="eyebrow">Location</div>
-            <h2>At the heart of Mauritius’ most desirable lifestyle corridor</h2>
-            <p class="section-copy">Black River connects premium residences, expatriate households, coastal leisure, tourism flow, and destination-led consumer demand.</p>
+            <h2>At the heart of Mauritius's most desirable lifestyle corridor</h2>
+            <p>Black River links premium homes, expatriate households, tourism flow, and destination leisure demand.</p>
           </div>
           <div class="grid-2">
-            <article class="summary-card">
+            <div class="summary-card">
               <strong>Catchment</strong>
-              <p>Black River, Tamarin, La Preneuse, Wolmar, Cascavelle, Tamarina, Black Rock, Les Salines.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Demand base</strong>
-            <p>High-income households, visitors, family users, corporate leisure, and premium second-home owners.</p>
-            </article>
+              <p>Black River, Tamarin, Cascavelle, Tamarina, Black Rock, Les Salines, Wolmar.</p>
+            </div>
+            <div class="summary-card">
+              <strong>Demand Base</strong>
+              <p>High-income households, visitors, family users, and premium second-home owners.</p>
+            </div>
           </div>
           <div class="chip-row">
             <div class="chip">expat density</div>
-            <div class="chip">premium tourism</div>
+            <div class="chip">tourism flow</div>
             <div class="chip">residential growth</div>
           </div>
         </div>
         <div class="image-card">
-          <img data-asset="black-river-overlook.jpeg" alt="Black River premium coastal setting" />
+          <img data-asset="black-river-overlook.jpeg" alt="Black River coastal environment" />
           <div class="image-caption">
-            <div class="micro">Lifestyle corridor</div>
-            <p>Urban sits inside the west-coast zone most aligned with premium leisure and branded community formats.</p>
+            <div class="micro">Lifestyle Corridor</div>
+            <p>Urban sits where premium leisure and residential value already intersect.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="infrastructure" class="page">
+    <section id="infrastructure" class="page standard">
       <div class="page-index">04 / Infrastructure</div>
       <div class="section-head">
         <div class="eyebrow">Infrastructure & Revenue Streams</div>
         <h2>A compact platform with multiple monetisation layers</h2>
-        <p class="section-copy">Urban should be read as a mixed-use lifestyle venue with sport, retail, food, events, and community programming.</p>
       </div>
       <div class="grid-4">
         <article class="tile"><div><strong>Padel Courts</strong><p>4 operational courts forming the core premium sports offer.</p></div><div class="chip">core asset</div></article>
         <article class="tile"><div><strong>Foot Five</strong><p>Complementary play format supporting wider venue utilisation.</p></div><div class="chip">adjacent revenue</div></article>
-        <article class="tile"><div><strong>Pro Shop</strong><p>On-site product sales reinforcing brand and player spend.</p></div><div class="chip">retail layer</div></article>
-        <article class="tile"><div><strong>Snack Bar</strong><p>F&amp;B touchpoint extending dwell time and hospitality value.</p></div><div class="chip">hospitality</div></article>
-        <article class="tile"><div><strong>Events</strong><p>Private formats, sponsor moments, branded tournament hosting.</p></div><div class="chip">activation</div></article>
-        <article class="tile"><div><strong>Corporate Activities</strong><p>Team days and venue privatisation for business audiences.</p></div><div class="chip">corporate</div></article>
-        <article class="tile"><div><strong>Coaching</strong><p>Private sessions, pathways, academy support, retention logic.</p></div><div class="chip">recurring demand</div></article>
+        <article class="tile"><div><strong>Pro Shop</strong><p>On-site retail reinforcing brand and player spend.</p></div><div class="chip">retail layer</div></article>
+        <article class="tile"><div><strong>Snack Bar</strong><p>Food and beverage touchpoint extending dwell time.</p></div><div class="chip">hospitality</div></article>
+        <article class="tile"><div><strong>Events</strong><p>Private formats, sponsor moments, and branded hosting.</p></div><div class="chip">activation</div></article>
+        <article class="tile"><div><strong>Corporate</strong><p>Team days and venue privatisation for business audiences.</p></div><div class="chip">corporate</div></article>
+        <article class="tile"><div><strong>Coaching</strong><p>Private sessions and academy support create repeat use.</p></div><div class="chip">recurring demand</div></article>
         <article class="tile"><div><strong>Community</strong><p>Families, regular players, juniors, and social after-play moments.</p></div><div class="chip">brand moat</div></article>
       </div>
     </section>
 
-    <section id="community" class="page">
+    <section id="community" class="page standard">
       <div class="page-index">05 / Community</div>
-      <div class="split-hero">
+      <div class="hero-split">
         <div class="image-card">
-          <img data-asset="community-women.jpg" alt="Urban Sport Black River community" />
+          <img data-asset="community-women.jpg" alt="Urban community players" />
           <div class="image-caption">
             <div class="micro">Community</div>
-            <p>The value of the asset is reinforced by visible human energy, not infrastructure alone.</p>
+            <p>Value is reinforced by visible human energy, not infrastructure alone.</p>
           </div>
         </div>
-        <div class="stack">
+        <div class="card">
           <div class="section-head">
             <div class="eyebrow">Community</div>
             <h2>A branded social venue, not just a court facility</h2>
-            <p class="section-copy">Urban already touches families, social players, juniors, sponsors, and west-coast residents through repeatable community moments.</p>
+            <p>Urban already touches families, social players, juniors, sponsors, and west-coast residents through repeatable community moments.</p>
           </div>
           <div class="grid-2">
-            <article class="summary-card">
-              <strong>Families</strong>
-              <p>Junior activity, after-school play, accessible family leisure.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Expatriates</strong>
-              <p>Premium households seeking sport, network, and lifestyle belonging.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Sponsors</strong>
-              <p>Brand visibility through events, signage, and audience activation.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Social Retention</strong>
-              <p>Repeated visits supported by habit, tribe, and venue identity.</p>
-            </article>
+            <div class="summary-card"><strong>Families</strong><p>Junior activity and accessible family leisure.</p></div>
+            <div class="summary-card"><strong>Expatriates</strong><p>Premium households seeking sport and belonging.</p></div>
+            <div class="summary-card"><strong>Sponsors</strong><p>Brand visibility through events and activation.</p></div>
+            <div class="summary-card"><strong>Retention</strong><p>Repeat visits driven by habit, tribe, and venue identity.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="market" class="page">
+    <section id="market" class="page standard">
       <div class="page-index">06 / Market</div>
       <div class="section-head">
         <div class="eyebrow">A Market Entering Its Growth Phase</div>
         <h2>Visible momentum already supports a stronger institutional conversation</h2>
-        <p class="section-copy">The category is no longer early-stage. Revenue visibility, player density, and structured competition now make the asset more legible to serious buyers.</p>
       </div>
       <div class="grid-4">
-        <article class="tile">
-          <div class="stat">7.69M</div>
+        <article class="stat-card">
+          <div class="stat-value">7.69M</div>
           <div class="stat-label">2023 Revenue</div>
-          <div class="stat-note">Early visible base from the working financial file.</div>
+          <div class="stat-note">Visible annual base from the reviewed financial file.</div>
         </article>
-        <article class="tile">
-          <div class="stat">8.67M</div>
+        <article class="stat-card">
+          <div class="stat-value">8.67M</div>
           <div class="stat-label">2024 Revenue</div>
-          <div class="stat-note">Commercial progression with stronger operating maturity.</div>
+          <div class="stat-note">Year-on-year commercial expansion.</div>
         </article>
-        <article class="tile">
-          <div class="stat">9.06M</div>
+        <article class="stat-card">
+          <div class="stat-value">9.06M</div>
           <div class="stat-label">2025 Revenue</div>
-          <div class="stat-note">Highest visible annual level in the reviewed source material.</div>
+          <div class="stat-note">Strongest visible annual level in the current source material.</div>
         </article>
-        <article class="tile">
-          <div class="stat">3.31M</div>
+        <article class="stat-card">
+          <div class="stat-value">3.31M</div>
           <div class="stat-label">2026 H1 Revenue</div>
-          <div class="stat-note">Half-year visibility useful for ongoing buyer diligence.</div>
+          <div class="stat-note">Half-year visibility supporting buyer dialogue.</div>
         </article>
       </div>
-      <div class="grid-2" style="margin-top:22px;">
-        <article class="summary-card">
-          <strong>MPL Growth</strong>
-          <p>National structure, organised calendar flow, and sponsor-friendly competition dynamics support category credibility.</p>
-        </article>
-        <article class="summary-card">
-          <strong>West Coast Demand</strong>
-          <p>Residential, tourism, and leisure growth continue to strengthen the address around the venue.</p>
-        </article>
+      <div class="grid-2">
+        <div class="summary-card"><strong>MPL Growth</strong><p>National structure and organised calendar flow support category credibility.</p></div>
+        <div class="summary-card"><strong>West Coast Demand</strong><p>Residential, tourism, and leisure growth continue to strengthen the address.</p></div>
       </div>
     </section>
 
-    <section id="ecosystem" class="page">
+    <section id="ecosystem" class="page standard">
       <div class="page-index">07 / Ecosystem</div>
       <div class="section-head">
         <div class="eyebrow">West Coast Ecosystem</div>
         <h2>A premium demand cluster that supports long-term venue relevance</h2>
-        <p class="section-copy">Urban benefits from overlapping residential, tourism, expatriate, family, and corporate demand rather than relying on one narrow customer source.</p>
+        <p>Urban benefits from overlapping residential, tourism, expatriate, family, and corporate demand rather than relying on one narrow customer source.</p>
       </div>
       <div class="ecosystem-band">
-        <article class="band-card">
-          <strong>Residential Wealth</strong>
-          <p>Premium homes, second residences, and high-income households strengthen recurring leisure demand.</p>
-        </article>
-        <article class="band-card">
-          <strong>Expat Lifestyle</strong>
-          <p>Sport-driven social habits support frequency, referrals, and higher spending profiles.</p>
-        </article>
-        <article class="band-card">
-          <strong>Tourism Flow</strong>
-          <p>Visitors and hospitality groups create demand for destination-friendly activities and packages.</p>
-        </article>
-        <article class="band-card">
-          <strong>Corporate Use</strong>
-          <p>Team events, private bookings, and sponsor activations widen venue utility beyond members.</p>
-        </article>
-        <article class="band-card">
-          <strong>Family Retention</strong>
-          <p>Junior pathways and casual social use improve repeat traffic across multiple age groups.</p>
-        </article>
-        <article class="band-card">
-          <strong>Brand Visibility</strong>
-          <p>Events, content, and community presence keep Urban commercially visible inside the west coast market.</p>
-        </article>
+        <article class="band-card"><strong>Residential Wealth</strong><p>Premium homes and high-income households strengthen recurring leisure demand.</p></article>
+        <article class="band-card"><strong>Expat Lifestyle</strong><p>Sport-driven habits support frequency, referrals, and higher spending profiles.</p></article>
+        <article class="band-card"><strong>Tourism Flow</strong><p>Visitors and hospitality groups create demand for destination-friendly activities.</p></article>
+        <article class="band-card"><strong>Corporate Use</strong><p>Team events and private bookings widen venue utility beyond members.</p></article>
+        <article class="band-card"><strong>Family Retention</strong><p>Junior pathways improve repeat traffic across multiple age groups.</p></article>
+        <article class="band-card"><strong>Brand Visibility</strong><p>Events and community presence keep Urban commercially visible in the west coast market.</p></article>
       </div>
     </section>
 
-    <section id="growth" class="page">
-      <div class="page-index">08 / Growth Potential</div>
-      <div class="split-hero">
-        <div class="stack">
+    <section id="growth" class="page standard">
+      <div class="page-index">08 / Growth</div>
+      <div class="hero-split">
+        <div class="card">
           <div class="section-head">
             <div class="eyebrow">Strategic Advantage & Growth Plan</div>
             <h2>More than four courts</h2>
-            <p class="section-copy">The next chapter is driven by packaging, monetisation discipline, and extension of the existing platform into higher-value use cases.</p>
+            <p>The next chapter is driven by packaging, monetisation discipline, and extension into higher-value use cases.</p>
           </div>
           <div class="grid-2">
-            <article class="summary-card">
-              <strong>Hospitality Extension</strong>
-              <p>Guest packages, destination sessions, premium after-play moments.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Corporate Format</strong>
-              <p>Team building, private hire, sponsor hospitality, branded events.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Academy Depth</strong>
-              <p>Junior pathways, private coaching, recurring family use.</p>
-            </article>
-            <article class="summary-card">
-              <strong>Commercial Layering</strong>
-              <p>Retail, F&amp;B, sponsorship, premium membership logic, event yield.</p>
-            </article>
+            <div class="summary-card"><strong>Hospitality</strong><p>Guest packages and premium after-play moments.</p></div>
+            <div class="summary-card"><strong>Corporate</strong><p>Team building, private hire, sponsor hospitality.</p></div>
+            <div class="summary-card"><strong>Academy</strong><p>Junior pathways and private coaching deepen retention.</p></div>
+            <div class="summary-card"><strong>Commercial</strong><p>Retail, F&amp;B, sponsorship, and event yield.</p></div>
           </div>
         </div>
         <div class="image-card">
-          <img data-asset="img-2056.png" alt="Urban Black River strategic growth image" />
+          <img data-asset="img-2056.png" alt="Urban growth visual" />
           <div class="image-caption">
-            <div class="micro">Growth platform</div>
+            <div class="micro">Growth Platform</div>
             <p>Execution upside comes from widening yield per visitor, not from sport revenue alone.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="rationale" class="page">
-      <div class="page-index">09 / Transaction Rationale</div>
+    <section id="rationale" class="page standard">
+      <div class="page-index">09 / Rationale</div>
       <div class="section-head">
         <div class="eyebrow">Transaction Rationale</div>
         <h2>Why the asset deserves investor attention now</h2>
-        <p class="section-copy">The acquisition case is supported by premium address quality, visible operations, category tailwinds, and multiple routes to value creation after takeover.</p>
       </div>
       <div class="grid-4">
-        <article class="tile"><div><strong>Scarcity</strong><p>Visible west-coast operating base in a high-value lifestyle corridor.</p></div><div class="chip">location premium</div></article>
-        <article class="tile"><div><strong>Execution</strong><p>Existing infrastructure and operating history reduce activation risk for buyers.</p></div><div class="chip">de-risked base</div></article>
-        <article class="tile"><div><strong>Demand</strong><p>Residential, expatriate, family, tourism, and corporate usage can all support the platform.</p></div><div class="chip">multi-source demand</div></article>
-        <article class="tile"><div><strong>Optionality</strong><p>Brand, events, academy, hospitality, retail, and sponsorship extend upside beyond court rentals.</p></div><div class="chip">platform upside</div></article>
+        <article class="tile"><div><strong>Scarcity</strong><p>Visible west-coast operating base in a high-value corridor.</p></div><div class="chip">location premium</div></article>
+        <article class="tile"><div><strong>Execution</strong><p>Existing infrastructure and operating history reduce activation risk.</p></div><div class="chip">de-risked base</div></article>
+        <article class="tile"><div><strong>Demand</strong><p>Residential, tourism, expatriate, family, and corporate usage can all support the platform.</p></div><div class="chip">multi-source demand</div></article>
+        <article class="tile"><div><strong>Optionality</strong><p>Brand, events, academy, hospitality, retail, and sponsorship extend upside.</p></div><div class="chip">platform upside</div></article>
       </div>
     </section>
 
-    <section id="buyers" class="page">
-      <div class="page-index">10 / Buyer Universe</div>
+    <section id="buyers" class="page standard">
+      <div class="page-index">10 / Buyers</div>
       <div class="section-head">
         <div class="eyebrow">Buyer Universe</div>
         <h2>Most logical acquirers</h2>
-        <p class="section-copy">The asset is relevant to multiple buyer profiles because it sits at the intersection of lifestyle, hospitality, community, and premium real estate.</p>
       </div>
       <div class="grid-2">
-        <article class="summary-card">
-          <strong>Hospitality Groups</strong>
-          <p>Transform Urban into a guest-facing sports, wellness, and destination experience layer.</p>
-        </article>
-        <article class="summary-card">
-          <strong>Real Estate Developers</strong>
-          <p>Use the platform as a live amenity strengthening residences, projects, and owner loyalty.</p>
-        </article>
-        <article class="summary-card">
-          <strong>Family Offices</strong>
-          <p>Acquire a differentiated operating lifestyle asset with brand and growth value.</p>
-        </article>
-        <article class="summary-card">
-          <strong>Strategic Leisure Operators</strong>
-          <p>Build a regional platform around sports, community, events, and recurring premium users.</p>
-        </article>
+        <div class="summary-card"><strong>Hospitality Groups</strong><p>Turn Urban into a guest-facing sport and destination experience layer.</p></div>
+        <div class="summary-card"><strong>Real Estate Developers</strong><p>Use the platform as a live amenity strengthening residences and mixed-use schemes.</p></div>
+        <div class="summary-card"><strong>Family Offices</strong><p>Acquire a differentiated operating lifestyle asset with brand and growth value.</p></div>
+        <div class="summary-card"><strong>Strategic Operators</strong><p>Build a regional platform around sports, community, events, and premium users.</p></div>
       </div>
     </section>
 
-    <section id="opportunity" class="page">
-      <div class="page-index">11 / Acquisition Opportunity</div>
-      <div class="section-head">
-        <div class="eyebrow">Transaction Opportunity</div>
-        <h2>What an acquirer is really buying</h2>
-        <p class="section-copy">A premium west-coast operating base, a visible leisure brand, an active community, and a platform capable of scaling across hospitality, events, and lifestyle monetisation.</p>
-      </div>
-      <div class="grid-3">
-        <article class="tile">
-          <div>
-            <strong>Hotel Groups</strong>
-            <p>Turn the asset into a guest-facing sport and experience platform.</p>
+    <section id="opportunity" class="page standard">
+      <div class="page-index">11 / Opportunity</div>
+      <div class="split-layout">
+        <div class="price-box">
+          <div class="eyebrow">Transaction Opportunity</div>
+          <h2>What an acquirer is really buying</h2>
+          <div class="price-number">Rs 35 Million</div>
+          <p>A premium west-coast operating base, a visible leisure brand, an active community, and a platform capable of scaling across hospitality, events, and lifestyle monetisation.</p>
+          <div class="chip-row">
+            <div class="chip">brand asset</div>
+            <div class="chip">community asset</div>
+            <div class="chip">location asset</div>
+            <div class="chip">growth vehicle</div>
           </div>
-          <div class="chip">hospitality buyer</div>
-        </article>
-        <article class="tile">
-          <div>
-            <strong>Developers</strong>
-            <p>Add a branded lifestyle amenity to premium residences and mixed-use schemes.</p>
-          </div>
-          <div class="chip">real estate buyer</div>
-        </article>
-        <article class="tile">
-          <div>
-            <strong>Family Offices</strong>
-            <p>Acquire a differentiated lifestyle asset with growth optionality.</p>
-          </div>
-          <div class="chip">private capital</div>
-        </article>
-      </div>
-      <div class="grid-2" style="margin-top:24px;">
-        <div class="card">
-          <div class="eyebrow">For Sale</div>
-          <div class="full-quote">Rs 35 Million</div>
-          <p style="margin-top:18px; max-width:580px;">The price reflects premium location, existing infrastructure, visible operating history, and the strategic value of a west-coast lifestyle platform.</p>
         </div>
         <div class="image-card">
           <img data-asset="urban-black-river.jpeg" alt="Urban Sport Black River transaction visual" />
           <div class="image-caption">
-            <div class="micro">Acquisition lens</div>
+            <div class="micro">Acquisition Lens</div>
             <p>The buyer secures a platform, a community, a location, and a growth narrative in one transaction.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="closing" class="page hero-page">
+    <section id="closing" class="page hero">
       <div class="page-index">12 / Closing</div>
       <div class="hero-media">
-        <img data-asset="black-river-overlook.jpeg" alt="Black River closing sunset view" />
+        <img data-asset="black-river-overlook.jpeg" alt="Black River closing view" />
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <div class="hero-panel" style="max-width:860px;">
+        <div class="hero-panel">
           <div class="eyebrow">Closing Perspective</div>
-          <div class="full-quote">Urban Sport Black River is a west-coast lifestyle platform with brand, community, hospitality, and growth value.</div>
+          <div class="big-quote">Urban Sport Black River is a west-coast lifestyle platform with brand, community, hospitality, and growth value.</div>
           <p class="lead">The opportunity is to acquire position before the wider market fully prices the strategic value of the location.</p>
           <div class="metric-row">
             <div class="metric-pill">For Sale</div>
@@ -1054,6 +958,13 @@
 
       const video = document.getElementById("deck-background-video");
       const soundToggle = document.getElementById("sound-toggle");
+      const pages = Array.from(document.querySelectorAll(".page"));
+      const links = Array.from(document.querySelectorAll(".nav-link"));
+      const prevPageButton = document.getElementById("prev-page");
+      const nextPageButton = document.getElementById("next-page");
+      const pagerIndicator = document.getElementById("pager-indicator");
+      let currentPageIndex = 0;
+
       if (video) {
         const source = isLocal
           ? video.getAttribute("data-video-local")
@@ -1082,25 +993,71 @@
         });
       }
 
-      const links = Array.from(document.querySelectorAll(".nav-link"));
-      const sections = links
-        .map((link) => document.querySelector(link.getAttribute("href")))
-        .filter(Boolean);
+      function setPage(index, updateHash) {
+        currentPageIndex = Math.max(0, Math.min(index, pages.length - 1));
+        pages.forEach((page, pageIndex) => {
+          page.classList.toggle("active", pageIndex === currentPageIndex);
+        });
 
-      if ("IntersectionObserver" in window && sections.length) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const id = "#" + entry.target.id;
-            links.forEach((link) => {
-              link.classList.toggle("active", link.getAttribute("href") === id);
-            });
-          });
-        }, { rootMargin: "-35% 0px -45% 0px", threshold: 0.1 });
+        const activePage = pages[currentPageIndex];
+        const activeHash = "#" + activePage.id;
 
-        sections.forEach((section) => observer.observe(section));
+        links.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === activeHash);
+        });
+
+        if (pagerIndicator) {
+          pagerIndicator.textContent =
+            String(currentPageIndex + 1).padStart(2, "0") +
+            " / " +
+            String(pages.length).padStart(2, "0");
+        }
+
+        if (prevPageButton) prevPageButton.disabled = currentPageIndex === 0;
+        if (nextPageButton) nextPageButton.disabled = currentPageIndex === pages.length - 1;
+
+        if (updateHash) {
+          history.replaceState(null, "", activeHash);
+        }
+      }
+
+      links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          const target = link.getAttribute("href");
+          const pageIndex = pages.findIndex((page) => "#" + page.id === target);
+          if (pageIndex >= 0) setPage(pageIndex, true);
+        });
+      });
+
+      if (prevPageButton) {
+        prevPageButton.addEventListener("click", () => setPage(currentPageIndex - 1, true));
+      }
+
+      if (nextPageButton) {
+        nextPageButton.addEventListener("click", () => setPage(currentPageIndex + 1, true));
+      }
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+          event.preventDefault();
+          setPage(currentPageIndex + 1, true);
+        }
+        if (event.key === "ArrowLeft" || event.key === "PageUp") {
+          event.preventDefault();
+          setPage(currentPageIndex - 1, true);
+        }
+      });
+
+      const startHash = window.location.hash;
+      const startIndex = pages.findIndex((page) => "#" + page.id === startHash);
+      setPage(startIndex >= 0 ? startIndex : 0, false);
+
+      if (!window.location.hash) {
+        history.replaceState(null, "", "#home");
       }
     })();
   </script>
 </body>
 </html>
+
