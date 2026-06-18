@@ -311,10 +311,10 @@
     .hero-content {
       z-index: 2;
       display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 24px;
-      align-items: end;
-      padding: 28px;
+      align-items: stretch;
+      padding: 30px 32px;
       min-height: 100%;
     }
 
@@ -336,44 +336,52 @@
     }
 
     .hero-panel {
-      padding: 26px 28px 28px;
-      background: rgba(7, 10, 15, 0.36);
-      backdrop-filter: blur(8px);
-      max-width: 760px;
-    }
-
-    .hero-side {
       display: grid;
-      gap: 16px;
-      align-self: stretch;
-      grid-template-rows: minmax(0, 1fr) auto;
-    }
-
-    .hero-showcase {
-      min-height: 0;
-      height: 100%;
-    }
-
-    .hero-showcase img {
+      align-content: space-between;
+      gap: 18px;
       min-height: 100%;
-      filter: brightness(0.94) contrast(1.06) saturate(1.06);
+      padding: 34px 36px 34px;
+      background:
+        linear-gradient(145deg, rgba(9, 14, 21, 0.84), rgba(9, 14, 21, 0.62)),
+        rgba(7, 10, 15, 0.54);
+      backdrop-filter: blur(14px);
+      max-width: 880px;
     }
 
-    .hero-side-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 16px;
+      border: 1px solid rgba(210, 180, 138, 0.26);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--gold-strong);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--gold-strong);
+      box-shadow: 0 0 14px rgba(210, 180, 138, 0.5);
     }
 
     .hero-price {
       display: grid;
       gap: 10px;
-      margin: 18px 0 18px;
-      padding: 18px 20px;
+      margin: 10px 0 4px;
+      padding: 24px 26px;
       border: 1px solid rgba(210, 180, 138, 0.34);
       border-radius: 24px;
       background: linear-gradient(135deg, rgba(210, 180, 138, 0.18), rgba(210, 180, 138, 0.05));
       box-shadow: 0 22px 50px rgba(0, 0, 0, 0.24);
+      max-width: 700px;
     }
 
     .hero-price-label {
@@ -385,8 +393,8 @@
 
     .hero-price-value {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 0.94;
+      font-size: clamp(54px, 6vw, 86px);
+      line-height: 0.9;
       text-transform: uppercase;
       color: var(--ink);
     }
@@ -395,7 +403,11 @@
       color: var(--ink);
       font-size: 15px;
       line-height: 1.46;
-      max-width: 440px;
+      max-width: 560px;
+    }
+
+    .lead {
+      margin: 0;
     }
 
     .mini-stat,
@@ -917,43 +929,23 @@
       <div class="hero-content">
         <div class="hero-panel">
           <div class="eyebrow">Strategic Acquisition Opportunity</div>
+          <div class="hero-kicker">West Coast Lifestyle &amp; Sports Platform</div>
           <h1>Urban Sport Black River</h1>
-          <p class="hero-subtitle">West Coast Lifestyle & Sports Platform</p>
           <div class="hero-price">
             <div class="hero-price-label">For Sale</div>
             <div class="hero-price-value">Rs 35 Million</div>
-            <div class="hero-price-note">A rare west-coast operating platform combining courts, lifestyle footfall, visible brand equity, and immediate acquisition readiness.</div>
+            <div class="hero-price-note">Strategic acquisition of a premium west-coast platform combining operating sports infrastructure, event capability, lifestyle relevance, and immediate buyer visibility.</div>
           </div>
-          <p class="lead">Strategic acquisition opportunity at the centre of Mauritius's premium west-coast lifestyle corridor.</p>
+          <p class="lead">A branded Black River destination positioned at the intersection of residential growth, expatriate lifestyle, leisure demand, and corporate activation potential.</p>
           <div class="metric-row">
             <div class="metric-pill">4 padel courts</div>
             <div class="metric-pill">1 foot five</div>
             <div class="metric-pill">pro shop</div>
             <div class="metric-pill">snack bar</div>
+            <div class="metric-pill">coaching</div>
             <div class="metric-pill">events platform</div>
           </div>
-          <div class="opportunity-banner">West Coast Lifestyle & Sports Platform</div>
-        </div>
-        <div class="hero-side">
-          <div class="image-card hero-showcase">
-            <img data-asset="black-river-drone-front.jpeg" alt="Urban Sport Black River main showcase" />
-            <div class="image-caption">
-              <div class="micro">Signature Asset View</div>
-              <p>Immediate visual of the venue inside its residential, tourism, and leisure catchment.</p>
-            </div>
-          </div>
-          <div class="hero-side-grid">
-            <div class="mini-stat">
-              <div class="micro">Acquisition Lens</div>
-              <strong>Operating Asset</strong>
-              <p>Existing infrastructure, existing footfall, and an active commercial identity already in place.</p>
-            </div>
-            <div class="mini-stat">
-              <div class="micro">Platform Mix</div>
-              <strong>Sport + Lifestyle</strong>
-              <p>Padel, Foot Five, hospitality, coaching, events, and community are already integrated on site.</p>
-            </div>
-          </div>
+          <div class="opportunity-banner">Institutional acquisition format for hospitality groups, developers, strategic operators, and family offices.</div>
         </div>
       </div>
     </section>
